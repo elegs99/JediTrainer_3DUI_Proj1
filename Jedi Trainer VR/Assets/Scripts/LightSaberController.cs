@@ -16,22 +16,18 @@ public class LightSaberController : MonoBehaviour
         if (isExtended) {
             if (isEffectSpawned) {
                 if (Physics.Raycast(saberBase.position, -saberBase.transform.up, out RaycastHit hit, .9f)) {
-                    Debug.Log("moving");
                     hitEffect.transform.position = hit.point;
                 } else {
-                    Debug.Log("Destroying");
                     Destroy(hitEffect);
                     isEffectSpawned = false;
                 }
             } else {
                 if (Physics.Raycast(saberBase.position, -saberBase.transform.up, out RaycastHit hit, .9f)) {
-                    Debug.Log("spawning");
                     hitEffect = Instantiate(saberHitEffect, hit.point, hit.transform.rotation);
                     isEffectSpawned = true;
                 }
             }
         } else {
-            Debug.Log("Destroying");
             Destroy(hitEffect);
             isEffectSpawned = false;
         }
