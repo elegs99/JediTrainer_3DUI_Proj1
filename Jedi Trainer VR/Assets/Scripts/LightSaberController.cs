@@ -5,13 +5,16 @@ using UnityEngine;
 public class LightSaberController : MonoBehaviour
 {
     public GameObject lightBlade;
-    public Light pointLight;
+    public CapsuleCollider lightsaberCollider;
+
     public void ExtendBlade() {
         lightBlade.SetActive(true);
-        pointLight.enabled = true;
+        lightsaberCollider.height = 24;
+        lightsaberCollider.center = new Vector3(0,0,8.6f);
     }
     public void RetractBlade() {
         lightBlade.SetActive(false);
-        pointLight.enabled = false;
+        lightsaberCollider.height = 8;
+        lightsaberCollider.center = new Vector3(0,0,0.5f);
     }
 }
