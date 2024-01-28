@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [Header("Input Actions")]
     public InputActionReference primaryButtonAction;
     public InputActionReference secondaryButtonAction;
+    public Slider sliderHealth;
+    public Slider sliderForce;
 
     private Coroutine primaryButtonHoldCoroutine;
     private const float REQUIRED_HOLD_DURATION = 5.0f;
@@ -30,6 +33,8 @@ public class PlayerController : MonoBehaviour
         primaryButtonAction.action.started += OnPrimaryButtonPress;
         primaryButtonAction.action.canceled += OnPrimaryButtonRelease;
         secondaryButtonAction.action.started += OnSecondaryButtonPress;
+        sliderHealth.value = playerHealth;
+        sliderForce.value = playerForce;
     }
 
     private void OnEnable()
@@ -50,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private void OnPrimaryButtonPress(InputAction.CallbackContext context)
     {
         Debug.Log("Primary button pressed.");
+        //AlterHealth(-5);
         primaryButtonHoldCoroutine = StartCoroutine(PrimaryButtonHoldCheck());
     }
 
@@ -68,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleButtonHeld(OculusButton button)
     {
+        //Debug.Log("Primary button Held.");
         if (button == OculusButton.PrimaryButton)
         {
             AlterForce(-3);
@@ -81,17 +88,23 @@ public class PlayerController : MonoBehaviour
 
     public void AlterHealth(int health)
     {
-        playerHealth += health;
-        if (playerHealth <= 0)
+        if ((playerHealth + health) < 0)
         {
-            Die();
+            playerHealth += health;
+            Die(); // Replace with end game function
+        } else if (playerHealth <= (100-health)) { // Check if +health exceeds max
+            playerHealth += health;
+            sliderHealth.value = playerHealth; // Update slider
         }
     }
 
 
     public void AlterForce(int force)
     {
-        playerForce += force;
+        if (playerForce <= (10-force)) { // Check if +force exceeds max
+            playerForce += force;
+            sliderForce.value = playerForce; // Update slider
+        }
     }
 
 
