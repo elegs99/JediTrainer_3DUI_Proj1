@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5496681108631949240
 Transform:
   m_ObjectHideFlags: 0
@@ -111,11 +111,12 @@ Transform:
   m_GameObject: {fileID: 3988503021037077356}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000000052154064, y: -0.0000015571713, z: 11.460608}
-  m_LocalScale: {x: 29.894913, y: 29.894913, z: 853.22876}
+  m_LocalPosition: {x: 0.000000052154064, y: 0, z: 12.52}
+  m_LocalScale: {x: 29.894913, y: 29.894913, z: 900}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5179619764975394400}
+  - {fileID: 1820553876065897368}
   m_Father: {fileID: 2085012122609830986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2068316046463329573
@@ -146,7 +147,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05087cbf53b68b0499b64dd81896552b, type: 2}
+  - {fileID: 2100000, guid: 2f59590a53d40fd40be8105a8127a433, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,6 +169,100 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4004971338139378878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820553876065897368}
+  - component: {fileID: 6230961194343482004}
+  m_Layer: 0
+  m_Name: Point Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1820553876065897368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004971338139378878}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00017}
+  m_LocalScale: {x: 0.66901016, y: 0.023440367, z: 0.66901}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5496681108631949240}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &6230961194343482004
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004971338139378878}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 1, g: 0, b: 0.02849722, a: 1}
+  m_Intensity: 2.5
+  m_Range: 1
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &5003645856011459802
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,8 +277,8 @@ GameObject:
   - component: {fileID: 2675611924060433414}
   - component: {fileID: 6674695747669395497}
   m_Layer: 0
-  m_Name: Light Saber
-  m_TagString: Untagged
+  m_Name: LightSaber (Red)
+  m_TagString: Saber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,9 +524,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 23.56
+  m_Height: 8
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 8.3}
+  m_Center: {x: 0, y: 0, z: 0.7}
 --- !u!114 &6674695747669395497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +540,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightBlade: {fileID: 3988503021037077356}
-  pointLight: {fileID: 2986587784062912425}
+  lightsaberCollider: {fileID: 2675611924060433414}
+  saberHitEffect: {fileID: 9144175762242974913, guid: 17fc90401c45be0428cb4cd3c90bf80d, type: 3}
+  saberBase: {fileID: 5179619764975394400}
 --- !u!1 &5318857266400341902
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +684,7 @@ Transform:
   m_GameObject: {fileID: 8620884931242544183}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: -0.00866}
   m_LocalScale: {x: 0.66901016, y: 0.023440367, z: 0.66901}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -604,8 +701,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 1, b: 0.060247898, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0, b: 0.02849722, a: 1}
+  m_Intensity: 2.5
   m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -647,7 +744,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}

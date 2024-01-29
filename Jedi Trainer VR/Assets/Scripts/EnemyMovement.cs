@@ -34,7 +34,15 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-
+    // this part of the code isn't working right now will fix tmrw
+    // it's because the grab interactable diasables the collider on the saber when you are holding it
+    // Should put seperate collider on the blade and handle and update blade tag to saber
+    // Also remove collider scaling from the lightsaber controller script
+    void OnCollisionEnter (Collision collision) {
+        if (collision.gameObject.tag == "Saber") {
+            Destroy(gameObject);
+        }
+    }
     private void MoveTowardsCamera()
     {
         Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
