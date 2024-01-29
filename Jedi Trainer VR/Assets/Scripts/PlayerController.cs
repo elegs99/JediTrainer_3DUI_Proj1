@@ -25,8 +25,17 @@ public class PlayerController : MonoBehaviour
     public Slider sliderHealth;
     public Slider sliderForce;
 
+    [Header("Action Values")]
+    public GameObject enemyPrefab;
+    public float predictionTime = 2f;
+    public float slowMotionScale = 0.5f;
+
     private Coroutine primaryButtonHoldCoroutine;
     private const float REQUIRED_HOLD_DURATION = 5.0f;
+
+    private GameObject[] futureEnemies;
+    private Vector3[] originalPositions;
+    private bool isPredicting = false;
 
     private void Awake()
     {
@@ -35,6 +44,21 @@ public class PlayerController : MonoBehaviour
         secondaryButtonAction.action.started += OnSecondaryButtonPress;
         sliderHealth.value = playerHealth;
         sliderForce.value = playerForce;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (!isPredicting)
+            {
+                FutureSight();
+            }
+            else
+            {
+                EndPrediction();
+            }
+        }
     }
 
     private void OnEnable()
@@ -93,6 +117,68 @@ public class PlayerController : MonoBehaviour
 
     private void OnSecondaryButtonPress(InputAction.CallbackContext context)
     {
+    }
+
+    private void FutureSight()
+    {
+        isPredicting = true;
+        Time.timeScale = slowMotionScale;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        futureEnemies = new GameObject[enemies.Length];
+        originalPositions = new Vector3[enemies.Length];
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            originalPositions[i] = enemies[i].transform.position;
+
+            futureEnemies[i] = Instantiate(enemyPrefab, PredictFuturePosition(enemies[i]), Quaternion.identity);
+            Renderer renderer = futureEnemies[i].GetComponent<Renderer>();
+            if(renderer != null)
+            {
+                Color c = renderer.material.color;
+                c.a = 0.1f;
+                renderer.material.color = c;
+            }
+            futureEnemies[i].tag = "Untagged";
+            Rigidbody rbClone = enemies[i].GetComponent<Rigidbody>();
+            if (rbClone != null)
+            {
+                rbClone.isKinematic = true;
+            }
+            Collider collider = enemies[i].GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+
+        }
+    }
+
+    private Vector3 PredictFuturePosition(GameObject enemy)
+    {
+        Rigidbody rb = enemy.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            return enemy.transform.position + rb.velocity * predictionTime;
+        }
+
+        return enemy.transform.position;
+
+    }
+
+    private void EndPrediction()
+    {
+        isPredicting = false;
+        Time.timeScale = 1f;
+        for (int i = 0; i < futureEnemies.Length; i++)
+        {
+            Destroy(futureEnemies[i]);
+        }
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].transform.position = originalPositions[i];
+        }
+
     }
 
     public void AlterHealth(int health)
