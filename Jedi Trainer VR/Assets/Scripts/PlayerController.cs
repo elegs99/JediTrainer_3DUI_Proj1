@@ -43,6 +43,15 @@ public class PlayerController : MonoBehaviour
         secondaryButtonAction.action.Enable();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            AlterHealth(-15);
+            Destroy(collision.gameObject);
+        }
+    }
+
     private void OnDisable()
     {
         Debug.Log("Disabling player controller.");
