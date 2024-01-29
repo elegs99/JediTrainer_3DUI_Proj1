@@ -4,39 +4,71 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 5f;
-    public float maxDirectionChangeAngle = 30.0f;
-    public float directionChangeInterval = 2.0f;
+    public float speed = 1;
+    public float rotateSpeed = 15; // Speed of rotation around the camera
 
     private GameObject player;
-    private Vector3 targetDirection;
-    private float timer = 0.0f;
-
+    private float currentRotateSpeed;
+    private Coroutine rotateDirectionCoroutine;
+    private float orbitRadius;
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        CalculateNewDirection();
+        player = GameObject.FindWithTag("MainCamera");
+        currentRotateSpeed = rotateSpeed;
+        rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirectionRoutine());
+        orbitRadius = Random.Range(2, 4);
     }
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (player != null && timer >= directionChangeInterval)
-        {
-            timer = 0.0f;
-            CalculateNewDirection();
-        }
-        transform.position += targetDirection * speed * Time.deltaTime;
-    }
-
-    private void CalculateNewDirection()
-    {
         if (player != null)
         {
-            Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-            float angle = Random.Range(-maxDirectionChangeAngle, maxDirectionChangeAngle);
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            targetDirection = rotation * directionToPlayer;
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (distanceToPlayer > orbitRadius)
+            {
+                MoveTowardsCamera();
+            }
+            else
+            {
+                RotateAroundCamera();
+            }
+        }
+    }
+
+    private void MoveTowardsCamera()
+    {
+        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+        transform.position += directionToPlayer * speed * Time.deltaTime;
+        FaceTowardsCamera();
+    }
+
+    private void RotateAroundCamera()
+    {
+        Vector3 relativePosition = transform.position - player.transform.position;
+        relativePosition = Quaternion.Euler(0, currentRotateSpeed * Time.deltaTime, 0) * relativePosition;
+        transform.position = player.transform.position + relativePosition;
+        FaceTowardsCamera();
+    }
+
+    private void FaceTowardsCamera()
+    {
+        transform.LookAt(player.transform);
+    }
+
+    private IEnumerator ChangeRotateDirectionRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(3, 10)); // Random wait time between 2 and 5 seconds
+            currentRotateSpeed = -currentRotateSpeed; // Reverse rotation direction
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (rotateDirectionCoroutine != null)
+        {
+            StopCoroutine(rotateDirectionCoroutine);
         }
     }
 }
