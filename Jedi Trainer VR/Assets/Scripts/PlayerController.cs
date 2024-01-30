@@ -110,8 +110,10 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Primary button Held.");
         if (button == OculusButton.PrimaryButton)
         {
-            AlterForce(-3);
-            AlterHealth(25);
+            if (playerForce-3 >= 0) { // Check if player has enough force 
+                AlterForce(-3);
+                AlterHealth(25);
+            }
         }
     }
 

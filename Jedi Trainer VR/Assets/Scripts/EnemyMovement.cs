@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     public Transform laserLaunchPoint;
 
     private GameObject player;
+    private PlayerController playerController;
+
     private float currentRotateSpeed;
     private Coroutine rotateDirectionCoroutine;
     private Coroutine shootLaserCoroutine;
@@ -19,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("MainCamera");
+        playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
         currentRotateSpeed = rotateSpeed;
         rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirectionRoutine());
         orbitRadius = Random.Range(2, 6);
@@ -96,6 +99,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void OnDestroy()
     {
+        playerController.AlterForce(2);
         if (rotateDirectionCoroutine != null)
         {
             StopCoroutine(rotateDirectionCoroutine);
