@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 
 public class EnemyController : MonoBehaviour
 {
+    // Before boss fight starts check if force is high enough
+    // if not spawn training droids
+    // 
     public GameObject dronePrefab;
 
     public float spawnInterval = 1.0f;
