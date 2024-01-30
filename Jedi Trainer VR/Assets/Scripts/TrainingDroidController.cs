@@ -22,10 +22,12 @@ public class TrainingDroidController : MonoBehaviour
     {
         player = GameObject.FindWithTag("MainCamera");
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
+
         currentRotateSpeed = rotateSpeed;
-        rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirectionRoutine());
-        orbitRadius = Random.Range(2, 6);
+        rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirection());
         shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
+
+        orbitRadius = Random.Range(2, 6);
     }
 
     private void Update()
@@ -45,10 +47,6 @@ public class TrainingDroidController : MonoBehaviour
             }
         }
     }
-    // this part of the code isn't working right now will fix tmrw
-    // it's because the grab interactable diasables the collider on the saber when you are holding it
-    // Should put seperate collider on the blade and handle and update blade tag to saber
-    // Also remove collider scaling from the lightsaber controller script
     void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.tag == "Saber") {
             Destroy(gameObject);
@@ -58,7 +56,7 @@ public class TrainingDroidController : MonoBehaviour
     {
         Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
         transform.position += directionToPlayer * speed * Time.deltaTime;
-        FaceTowardsCamera();
+        FaceTowardsTarget();
     }
 
     private void RotateAroundTarget()
@@ -66,14 +64,14 @@ public class TrainingDroidController : MonoBehaviour
         Vector3 relativePosition = transform.position - player.transform.position;
         relativePosition = Quaternion.Euler(0, currentRotateSpeed * Time.deltaTime, 0) * relativePosition;
         transform.position = player.transform.position + relativePosition;
-        FaceTowardsCamera();
+        FaceTowardsTarget();
     }
 
-    private void FaceTowardsCamera()
+    private void FaceTowardsTarget()
     {
         transform.LookAt(player.transform);
     }
-    private IEnumerator ChangeRotateDirectionRoutine()
+    private IEnumerator ChangeRotateDirection()
     {
         while (true)
         {
@@ -103,6 +101,10 @@ public class TrainingDroidController : MonoBehaviour
         if (rotateDirectionCoroutine != null)
         {
             StopCoroutine(rotateDirectionCoroutine);
+        }
+        if (shootLaserCoroutine != null)
+        {
+            StopCoroutine(shootLaserCoroutine);
         }
     }
 }

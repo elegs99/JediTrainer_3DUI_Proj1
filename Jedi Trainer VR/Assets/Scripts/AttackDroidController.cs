@@ -5,19 +5,17 @@ using UnityEngine;
 public class AttackDroidController : MonoBehaviour
 {
     public float speed = 1;
+    public float hitRadius = .1f;
 
+    private bool hitPlayer = false; 
     private GameObject player;
     private PlayerController playerController;
 
     private float currentRotateSpeed;
     private Coroutine rotateDirectionCoroutine;
-    private Coroutine shootLaserCoroutine;
-    private float orbitRadius;
-    private bool shootLaser = false;
-
     void Start()
     {
-        player = GameObject.FindWithTag("MainCamera");
+        player = GameObject.Find("Player Target");
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
     }
 
@@ -26,9 +24,12 @@ public class AttackDroidController : MonoBehaviour
         if (player != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer > orbitRadius)
+            if (distanceToPlayer > hitRadius)
             {
-                MoveTowardsCamera();
+                MoveTowardsTarget();
+            } else {
+                hitPlayer = true;
+                Destroy(gameObject);
             }
         }
     }
@@ -41,24 +42,22 @@ public class AttackDroidController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void MoveTowardsCamera()
+    private void MoveTowardsTarget()
     {
         Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
         transform.position += directionToPlayer * speed * Time.deltaTime;
-        FaceTowardsCamera();
+        FaceTowardsTarget();
     }
 
-    private void FaceTowardsCamera()
+    private void FaceTowardsTarget()
     {
         transform.LookAt(player.transform);
     }
 
     private void OnDestroy()
     {
-        playerController.AlterForce(2);
-        if (rotateDirectionCoroutine != null)
-        {
-            StopCoroutine(rotateDirectionCoroutine);
+        if (!hitPlayer) {
+            playerController.AlterForce(2);
         }
     }
 }
