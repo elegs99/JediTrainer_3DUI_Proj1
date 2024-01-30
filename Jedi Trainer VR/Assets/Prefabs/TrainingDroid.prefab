@@ -346,5 +346,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotateSpeed: 15
-  laserbeam: {fileID: 0}
-  laserLaunchPoint: {fileID: 0}
+  laserbeam: {fileID: 6914592063930039172, guid: 23bedb22dbe279443b313ecbf28c3bef, type: 3}
+  laserLaunchPoint: {fileID: 5063045185877964917}
