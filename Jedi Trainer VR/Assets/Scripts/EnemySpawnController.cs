@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
         {
             timer = 0.0f;
             GameObject drone = Instantiate(dronePrefab, transform.position, transform.rotation);
-            drone.AddComponent<EnemyMovement>();
+            drone.AddComponent<TrainingDroidController>();
             enemiesSpawned++;
             MoveSpawner();
         }

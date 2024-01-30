@@ -258,7 +258,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8104546937036050919}
   - component: {fileID: 1793504558087293837}
-  - component: {fileID: 1843855280094875066}
+  - component: {fileID: 8115640030387405689}
+  - component: {fileID: 6339417004149712671}
   m_Layer: 0
   m_Name: TrainingDroid
   m_TagString: Enemy
@@ -304,7 +305,34 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.5
   m_Center: {x: 0, y: -0.21, z: -0.87}
---- !u!114 &1843855280094875066
+--- !u!54 &8115640030387405689
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976233797925999245}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6339417004149712671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,5 +346,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotateSpeed: 15
-  laserbeam: {fileID: 6914592063930039172, guid: 23bedb22dbe279443b313ecbf28c3bef, type: 3}
-  laserLaunchPoint: {fileID: 5063045185877964917}
+  laserbeam: {fileID: 0}
+  laserLaunchPoint: {fileID: 0}

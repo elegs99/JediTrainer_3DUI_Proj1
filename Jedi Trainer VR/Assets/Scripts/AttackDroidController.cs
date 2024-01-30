@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainingDroidController : MonoBehaviour
+public class AttackDroidController : MonoBehaviour
 {
     public float speed = 1;
-    public float rotateSpeed = 15; // Speed of rotation around the camera
-    public GameObject laserbeam;
-    public Transform laserLaunchPoint;
 
     private GameObject player;
     private PlayerController playerController;
@@ -22,10 +19,6 @@ public class TrainingDroidController : MonoBehaviour
     {
         player = GameObject.FindWithTag("MainCamera");
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
-        currentRotateSpeed = rotateSpeed;
-        rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirectionRoutine());
-        orbitRadius = Random.Range(2, 6);
-        shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
     }
 
     private void Update()
@@ -35,13 +28,7 @@ public class TrainingDroidController : MonoBehaviour
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
             if (distanceToPlayer > orbitRadius)
             {
-                MoveTowardsTarget();
-            }
-            else
-            {
-                
-                RotateAroundTarget();
-                ShootPlayer();
+                MoveTowardsCamera();
             }
         }
     }
@@ -54,18 +41,10 @@ public class TrainingDroidController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void MoveTowardsTarget()
+    private void MoveTowardsCamera()
     {
         Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
         transform.position += directionToPlayer * speed * Time.deltaTime;
-        FaceTowardsCamera();
-    }
-
-    private void RotateAroundTarget()
-    {
-        Vector3 relativePosition = transform.position - player.transform.position;
-        relativePosition = Quaternion.Euler(0, currentRotateSpeed * Time.deltaTime, 0) * relativePosition;
-        transform.position = player.transform.position + relativePosition;
         FaceTowardsCamera();
     }
 
@@ -73,30 +52,7 @@ public class TrainingDroidController : MonoBehaviour
     {
         transform.LookAt(player.transform);
     }
-    private IEnumerator ChangeRotateDirectionRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(2f, 3f));
-            currentRotateSpeed = -currentRotateSpeed; // Reverse rotation direction
-        }
-    }
-    private IEnumerator Wait2ShootLaser()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(2f, 5f)); // Random wait time between 2 and 5 seconds
-            shootLaser = true;
-        }
-    }
-    private void ShootPlayer()
-    {
-        if (shootLaser && laserbeam != null && laserLaunchPoint != null)
-        {
-            Instantiate(laserbeam, laserLaunchPoint.position, laserLaunchPoint.rotation);
-            shootLaser = false;
-        }
-    }
+
     private void OnDestroy()
     {
         playerController.AlterForce(2);
