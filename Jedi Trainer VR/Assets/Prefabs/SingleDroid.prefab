@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1793504558087293837}
   m_Layer: 0
   m_Name: SingleDroid
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotateSpeed: 15
+  laserbeam: {fileID: 0}
+  laserLaunchPoint: {fileID: 0}
 --- !u!135 &1793504558087293837
 SphereCollider:
   m_ObjectHideFlags: 0
