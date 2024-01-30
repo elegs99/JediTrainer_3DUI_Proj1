@@ -29,6 +29,7 @@ public class AttackDroidController : MonoBehaviour
                 MoveTowardsTarget();
             } else {
                 hitPlayer = true;
+                playerController.AlterHealth(-5);
                 Destroy(gameObject);
             }
         }
