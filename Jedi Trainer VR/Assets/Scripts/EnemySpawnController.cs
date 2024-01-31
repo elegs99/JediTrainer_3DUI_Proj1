@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
 
     private float timer = 0.0f;
     private int currentWave = 1;
+    private int waveIndex = 0;
     private int enemiesToSpawn;
     private int enemiesSpawned = 0;
     private Vector2 spawnAreaSize;
@@ -28,7 +29,7 @@ public class EnemyController : MonoBehaviour
         if (timer >= spawnInterval && enemiesSpawned < enemiesToSpawn)
         {
             timer = 0.0f;
-            GameObject drone = Instantiate(dronePrefabs[currentWave - 1], transform.position, transform.rotation);
+            GameObject drone = Instantiate(dronePrefabs[waveIndex], transform.position, transform.rotation);
             spawnedEnemies.Add(drone);
             enemiesSpawned++;
             MoveSpawner();
@@ -59,20 +60,24 @@ public class EnemyController : MonoBehaviour
         switch(waveNumber)
         { 
             case 1:
-                spawnAreaSize = new Vector2(1f, 1f);
-                enemiesToSpawn = 3;
+                spawnAreaSize = new Vector2(2f, 2f);
+                enemiesToSpawn = 5;
+                waveIndex = 0;
                 break;
             case 2:
                 spawnAreaSize = new Vector2(10f, 10f);
-                enemiesToSpawn = 10;
+                enemiesToSpawn = 8;
+                waveIndex = 1;
                 break;
             case 3:
                 spawnAreaSize = new Vector2(5f, 5f);
                 enemiesToSpawn = 1;
+                waveIndex = 2;
                 break;
             default:
                 spawnAreaSize = new Vector2(1f, 1f);
-                enemiesToSpawn = 3;
+                enemiesToSpawn = 1;
+                waveIndex = 0;
                 break;
         }
         roundText.text = "Round: " + currentWave.ToString();
