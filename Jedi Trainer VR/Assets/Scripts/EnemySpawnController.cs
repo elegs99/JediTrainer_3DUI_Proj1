@@ -77,7 +77,7 @@ public class EnemyController : MonoBehaviour
             default:
                 spawnAreaSize = new Vector2(1f, 1f);
                 enemiesToSpawn = 1;
-                waveIndex = 0;
+                waveIndex = 1;
                 break;
         }
         roundText.text = "Round: " + currentWave.ToString();
