@@ -2260,7 +2260,7 @@ MonoBehaviour:
   dronePrefabs:
   - {fileID: 5341661523106822021, guid: aef36637aac54644da99c23e43799085, type: 3}
   - {fileID: 8976233797925999245, guid: 38da0997d8e38d048a9c5b2e80d64835, type: 3}
-  - {fileID: 8976233797925999245, guid: 38da0997d8e38d048a9c5b2e80d64835, type: 3}
+  - {fileID: 5341661523106822021, guid: aef36637aac54644da99c23e43799085, type: 3}
   roundText: {fileID: 2028431914}
   spawnInterval: 3
 --- !u!4 &1480767359
