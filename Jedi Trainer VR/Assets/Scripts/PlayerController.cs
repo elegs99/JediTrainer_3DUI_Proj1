@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,10 +21,16 @@ public class PlayerController : MonoBehaviour
     [Header("Input Actions")]
     public InputActionReference primaryButtonAction;
     public InputActionReference secondaryButtonAction;
-    public Slider sliderHealth;
-    public Slider sliderForce;
+    public InputActionReference triggerAction;
+    public GameObject leftController;
+    public GameObject rightController;
 
     [Header("Action Values")]
+    public float extensionThreshold = 0.4f;
+    public float angleThreshold = 35f;
+
+    public Transform referencePoint;
+    public ParticleSystem lightningEffect;
     public GameObject enemyPrefab;
     public float predictionTime = 2f;
     public float slowMotionScale = 0.5f;
@@ -42,8 +47,7 @@ public class PlayerController : MonoBehaviour
         primaryButtonAction.action.started += OnPrimaryButtonPress;
         primaryButtonAction.action.canceled += OnPrimaryButtonRelease;
         secondaryButtonAction.action.started += OnSecondaryButtonPress;
-        sliderHealth.value = playerHealth;
-        sliderForce.value = playerForce;
+        triggerAction.action.started += OnTriggerPressed;
     }
 
     void Update()
@@ -65,6 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         primaryButtonAction.action.Enable();
         secondaryButtonAction.action.Enable();
+        triggerAction.action.Enable();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -85,6 +90,32 @@ public class PlayerController : MonoBehaviour
         secondaryButtonAction.action.Disable();
     }
 
+    private void OnTriggerPressed(InputAction.CallbackContext context)
+    {
+        if(CheckIfExtended(rightController.transform, referencePoint))
+        {
+            ShootLightning();
+        }
+    }
+
+    private bool CheckIfExtended(Transform controllerTransform, Transform referencePoint)
+    {
+        Vector3 armVector = controllerTransform.position - referencePoint.position;
+        Vector3 torsoDirection = referencePoint.forward;
+        float armTorsoAngle = Vector3.Angle(armVector, torsoDirection);
+        float armLength = armVector.magnitude;
+        return armTorsoAngle >= angleThreshold && armLength >= extensionThreshold;
+    }
+
+    private void ShootLightning()
+    {
+        if (playerForce > 0)
+        {
+            AlterForce(-1);
+            StartCoroutine(ShootLightningEnumerator());
+        }
+
+    }
     private void OnPrimaryButtonPress(InputAction.CallbackContext context)
     {
         Debug.Log("Primary button pressed.");
@@ -103,6 +134,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(REQUIRED_HOLD_DURATION);
         HandleButtonHeld(OculusButton.PrimaryButton);
+    }
+
+    private IEnumerator ShootLightningEnumerator()
+    {
+        lightningEffect.Play();
+        yield return new WaitForSeconds(1f);
+        lightningEffect.Stop();
     }
 
     private void HandleButtonHeld(OculusButton button)
@@ -191,7 +229,6 @@ public class PlayerController : MonoBehaviour
             Die(); // Replace with end game function
         } else if (playerHealth <= (100-health)) { // Check if +health exceeds max
             playerHealth += health;
-            sliderHealth.value = playerHealth; // Update slider
         }
     }
 
@@ -200,7 +237,6 @@ public class PlayerController : MonoBehaviour
     {
         if (playerForce <= (10-force)) { // Check if +force exceeds max
             playerForce += force;
-            sliderForce.value = playerForce; // Update slider
         }
     }
 
