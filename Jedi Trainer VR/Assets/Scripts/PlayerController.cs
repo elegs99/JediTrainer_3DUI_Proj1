@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input Actions")]
     public InputActionReference primaryButtonAction;
-    public InputActionReference secondaryButtonAction;
     public InputActionReference triggerAction;
     public GameObject leftController;
     public GameObject rightController;
@@ -38,37 +37,21 @@ public class PlayerController : MonoBehaviour
     private Coroutine primaryButtonHoldCoroutine;
     private const float REQUIRED_HOLD_DURATION = 5.0f;
 
-    private GameObject[] futureEnemies;
-    private Vector3[] originalPositions;
-    private bool isPredicting = false;
-
     private void Awake()
     {
         primaryButtonAction.action.started += OnPrimaryButtonPress;
         primaryButtonAction.action.canceled += OnPrimaryButtonRelease;
-        secondaryButtonAction.action.started += OnSecondaryButtonPress;
         triggerAction.action.started += OnTriggerPressed;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (!isPredicting)
-            {
-                FutureSight();
-            }
-            else
-            {
-                EndPrediction();
-            }
-        }
+
     }
 
     private void OnEnable()
     {
         primaryButtonAction.action.Enable();
-        secondaryButtonAction.action.Enable();
         triggerAction.action.Enable();
     }
 
@@ -85,9 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Disabling player controller.");
         primaryButtonAction.action.started -= OnPrimaryButtonPress;
-        secondaryButtonAction.action.started -= OnSecondaryButtonPress;
         primaryButtonAction.action.Disable();
-        secondaryButtonAction.action.Disable();
     }
 
     private void OnTriggerPressed(InputAction.CallbackContext context)
@@ -153,72 +134,6 @@ public class PlayerController : MonoBehaviour
                 AlterHealth(25);
             }
         }
-    }
-
-    private void OnSecondaryButtonPress(InputAction.CallbackContext context)
-    {
-    }
-
-    private void FutureSight()
-    {
-        isPredicting = true;
-        Time.timeScale = slowMotionScale;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        futureEnemies = new GameObject[enemies.Length];
-        originalPositions = new Vector3[enemies.Length];
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            originalPositions[i] = enemies[i].transform.position;
-
-            futureEnemies[i] = Instantiate(enemyPrefab, PredictFuturePosition(enemies[i]), Quaternion.identity);
-            Renderer renderer = futureEnemies[i].GetComponent<Renderer>();
-            if(renderer != null)
-            {
-                Color c = renderer.material.color;
-                c.a = 0.1f;
-                renderer.material.color = c;
-            }
-            futureEnemies[i].tag = "Untagged";
-            Rigidbody rbClone = enemies[i].GetComponent<Rigidbody>();
-            if (rbClone != null)
-            {
-                rbClone.isKinematic = true;
-            }
-            Collider collider = enemies[i].GetComponent<Collider>();
-            if (collider != null)
-            {
-                collider.enabled = false;
-            }
-
-        }
-    }
-
-    private Vector3 PredictFuturePosition(GameObject enemy)
-    {
-        Rigidbody rb = enemy.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            return enemy.transform.position + rb.velocity * predictionTime;
-        }
-
-        return enemy.transform.position;
-
-    }
-
-    private void EndPrediction()
-    {
-        isPredicting = false;
-        Time.timeScale = 1f;
-        for (int i = 0; i < futureEnemies.Length; i++)
-        {
-            Destroy(futureEnemies[i]);
-        }
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            enemies[i].transform.position = originalPositions[i];
-        }
-
     }
 
     public void AlterHealth(int health)
