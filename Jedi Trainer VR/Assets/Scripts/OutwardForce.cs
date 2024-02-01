@@ -3,12 +3,12 @@ using UnityEngine;
 public class OutwardForce : MonoBehaviour
 {
     public float pushForce = 10f;
-    public float viewRadius = 10f; // Radius within which to check for enemies
+    public float viewRadius = 10f;
     public float viewAngle = 45f;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y)) // Replace 'Y' with your desired button
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             Debug.Log("Pushing");
             PushEnemies();
