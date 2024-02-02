@@ -10,9 +10,8 @@ public class ForceFuture : MonoBehaviour
     
     private PlayerController player;
     private bool isSimulating = false;
-    private List<GameObject> originalCubes = new List<GameObject>();
+    private List<GameObject> originalEnemies = new List<GameObject>();
     private Dictionary<GameObject, List<Vector3>> recordedForces = new Dictionary<GameObject, List<Vector3>>();
-
 
     private void Awake()
     {
@@ -43,10 +42,10 @@ public class ForceFuture : MonoBehaviour
     IEnumerator SimulateFutureMovement()
     {
         isSimulating = true;
-        foreach (GameObject originalCube in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach (GameObject originalEnemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            GameObject clone = Instantiate(originalCube, originalCube.transform.position, originalCube.transform.rotation);
-            foreach (Collider col in  originalCube.GetComponentsInChildren<Collider>())
+            GameObject clone = Instantiate(originalEnemy, originalEnemy.transform.position, originalEnemy.transform.rotation);
+            foreach (Collider col in  originalEnemy.GetComponentsInChildren<Collider>())
             {
                 col.enabled = false;
             }
@@ -54,13 +53,22 @@ public class ForceFuture : MonoBehaviour
             {
                 col.enabled = false;
             }
-            CubeMovement cloneController = clone.GetComponent<CubeMovement>();
-      
-            cloneController.player = gameObject;
+            if(originalEnemy.name.Contains("Attack"))
+            {
+                AttackDroidController cloneController = clone.GetComponent<AttackDroidController>();
 
-            originalCube.GetComponent<CubeMovement>().PauseMovement();
-            cloneController.isPaused = true;
-            originalCubes.Add(originalCube);
+                originalEnemy.GetComponent<AttackDroidController>().PauseMovement();
+                cloneController.isPaused = true;
+            }
+            else if(originalEnemy.name.Contains("Training"))
+            {
+                TrainingDroidController cloneController = clone.GetComponent<TrainingDroidController>();
+
+                originalEnemy.GetComponent<TrainingDroidController>().PauseMovement();
+                cloneController.isPaused = true;
+            }
+
+            originalEnemies.Add(originalEnemy);
 
             recordedForces.Add(clone, new List<Vector3>());
         }
@@ -69,11 +77,11 @@ public class ForceFuture : MonoBehaviour
 
         foreach (KeyValuePair<GameObject, List<Vector3>> entry in recordedForces)
         {
-            GameObject originalCube = originalCubes.Find(c => c.name == entry.Key.name.Replace("(Clone)", ""));
-            StartCoroutine(ApplyForcesSequentially(originalCube, entry.Value));
+            GameObject originalEnemy = originalEnemies.Find(c => c.name == entry.Key.name.Replace("(Clone)", ""));
+            StartCoroutine(ApplyForcesSequentially(originalEnemy, entry.Value));
             Destroy(entry.Key);
         }
-        originalCubes.Clear();
+        originalEnemies.Clear();
         recordedForces.Clear();
         isSimulating = false;
     }
@@ -93,25 +101,33 @@ public class ForceFuture : MonoBehaviour
         }
     }
 
-    IEnumerator ApplyForcesSequentially(GameObject cube, List<Vector3> forces)
+    IEnumerator ApplyForcesSequentially(GameObject enemy, List<Vector3> forces)
     {
-        Rigidbody rb = cube.GetComponent<Rigidbody>();
+        Rigidbody rb = enemy.GetComponent<Rigidbody>();
         foreach (Vector3 force in forces)
         {
             rb.AddForce(force * 5.0f, ForceMode.VelocityChange);
             yield return new WaitForSeconds(2f);
         }
-        foreach (Collider col in cube.GetComponentsInChildren<Collider>())
+        foreach (Collider col in enemy.GetComponentsInChildren<Collider>())
         {
             col.enabled = true;
         }
-        cube.GetComponent<CubeMovement>().ResumeMovement();
+        if (enemy.name.Contains("Attack"))
+        {
+             enemy.GetComponent<AttackDroidController>().ResumeMovement();
+        }
+        else if (enemy.name.Contains("Training"))
+        {
+            enemy.GetComponent<TrainingDroidController>().ResumeMovement();
+        }
+
     }
 
 
-    Vector3 CalculateRandomDirection(GameObject cube)
+    Vector3 CalculateRandomDirection(GameObject enemy)
     {
-        Vector3 directionToPlayer = (player.transform.position - cube.transform.position).normalized;
+        Vector3 directionToPlayer = (player.transform.position - enemy.transform.position).normalized;
         Vector3 randomDirection = new(
             directionToPlayer.x + Random.Range(-2.0f, 2.0f),
             0,

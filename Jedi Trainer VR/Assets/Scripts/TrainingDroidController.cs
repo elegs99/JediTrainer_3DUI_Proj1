@@ -9,6 +9,7 @@ public class TrainingDroidController : MonoBehaviour
     public GameObject laserbeam;
     public Transform laserLaunchPoint;
     public Vector2Int orbitRadiusRange;
+    public bool isPaused = false;
     private GameObject player;
     private PlayerController playerController;
 
@@ -17,9 +18,12 @@ public class TrainingDroidController : MonoBehaviour
     private Coroutine shootLaserCoroutine;
     private float orbitRadius;
     private bool shootLaser = false;
+    private Rigidbody rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         player = GameObject.FindWithTag("MainCamera");
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
 
@@ -41,12 +45,12 @@ public class TrainingDroidController : MonoBehaviour
             }
             else
             {
-                
                 RotateAroundTarget();
                 ShootPlayer();
             }
         }
     }
+
     void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.tag == "Saber") {
             Destroy(gameObject);
@@ -106,5 +110,23 @@ public class TrainingDroidController : MonoBehaviour
         {
             StopCoroutine(shootLaserCoroutine);
         }
+    }
+    public void ResumeMovement()
+    {
+        isPaused = false;
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+    }
+    public void PauseMovement()
+    {
+        isPaused = true;
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }

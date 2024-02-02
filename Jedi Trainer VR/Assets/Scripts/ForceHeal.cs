@@ -34,6 +34,7 @@ public class ForceHeal : MonoBehaviour
 
     private void OnHealButtonPressed(InputAction.CallbackContext context)
     {
+        Debug.Log("Heal button pressed");
         healingCoroutine = StartCoroutine(HealButtonHoldCheck());
     }
 
@@ -48,6 +49,7 @@ public class ForceHeal : MonoBehaviour
 
     private IEnumerator HealButtonHoldCheck()
     {
+        Debug.Log("Heal button hold check started");
         isHealing = true;
         yield return new WaitForSeconds(requiredHoldDuration);
         if (player.playerForce > 1)

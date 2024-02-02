@@ -21,11 +21,16 @@ public class PlayerController : MonoBehaviour
 
     public void AlterHealth(int health)
     {
-        playerForce += health;
-        if (playerHealth <= 0)
+        playerHealth += health;
+        if(playerHealth >= 100)
+        {
+            playerHealth = 100;
+        }
+        else if (playerHealth <= 0)
         {
             Die();
         }
+        Debug.Log(playerHealth);
     }
 
     public void AlterForce(int force)
