@@ -1,188 +1,100 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine.InputSystem;
+using UnityEngine;
 
 public class FutureMovement : MonoBehaviour
 {
-    public GameObject cubePrefab;
+    public GameObject player;
     public float simulationTime = 5f;
-    public float timeScale = 0.1f;
-    public InputActionReference secondaryButtonAction;
-    private List<GameObject> originalCubes = new();
-    private List<GameObject> cloneCubes = new();
-    private Dictionary<GameObject, Queue<Vector3>> futurePaths = new();
-    private bool isSimulating = false;
+    private List<GameObject> originalCubes = new List<GameObject>();
+    private Dictionary<GameObject, List<Vector3>> recordedForces = new Dictionary<GameObject, List<Vector3>>();
 
 
-    private void Awake()
+    private void Update()
     {
-        secondaryButtonAction.action.started += OnSecondaryButtonPress;
-    }
-
-    void Start()
-    {
-
-    }
-
-    private void OnEnable()
-    {
-        secondaryButtonAction.action.Enable();
-    }
-
-    private void OnDisable()
-    {
-        secondaryButtonAction.action.started -= OnSecondaryButtonPress;
-        secondaryButtonAction.action.Disable();
-    }
-
-    private void OnSecondaryButtonPress(InputAction.CallbackContext context)
-    {
-        if (!isSimulating)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            originalCubes = GameObject.FindGameObjectsWithTag("Enemy").ToList();
-
-            StartCoroutine(SimulateFuture());
+            StartCoroutine(SimulateFutureMovement());
         }
     }
 
-    IEnumerator SimulateFuture()
+    IEnumerator SimulateFutureMovement()
     {
-        isSimulating = true;
-        foreach (var clone in cloneCubes)
+        foreach (GameObject originalCube in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            Destroy(clone);
-        }
-        cloneCubes.Clear();
-        futurePaths.Clear();
-
-        FreezeOriginalCubes();
-        CloneCubes();
-        Time.timeScale = timeScale;
-
-        float timer = 0;
-        while (timer < simulationTime)
-        {
-            RecordClonePositions();
-            timer += (Time.deltaTime / timeScale);
-            yield return null;
-        }
-
-        Time.timeScale = 1.0f;
-        DestroyClones();
-        StartCoroutine(ApplyFutureMovement());
-        isSimulating = false;
-    }
-
-    void FreezeOriginalCubes()
-    {
-        foreach (var cube in originalCubes)
-        {
-            var cubeMovement = cube.GetComponent<CubeMovement>();
-            if (cubeMovement != null)
+            GameObject clone = Instantiate(originalCube, originalCube.transform.position, originalCube.transform.rotation);
+            foreach (Collider col in  originalCube.GetComponentsInChildren<Collider>())
             {
-                cubeMovement.FreezeMovement();
+                col.enabled = false;
             }
-        }
-    }
-
-    void CloneCubes()
-    {
-        foreach (var originalCube in originalCubes)
-        {
-            var clone = Instantiate(originalCube, originalCube.transform.position, Quaternion.identity);
-            cloneCubes.Add(clone);
-            futurePaths.Add(originalCube, new Queue<Vector3>());
-
-            var renderer = clone.GetComponent<Renderer>();
-            if (renderer != null)
+            foreach (Collider col in clone.GetComponentsInChildren<Collider>())
             {
-                Material cloneMaterial = new Material(renderer.material);
-                cloneMaterial.SetFloat("_Mode", 3);
-                cloneMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                cloneMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                cloneMaterial.SetInt("_ZWrite", 0);
-                cloneMaterial.DisableKeyword("_ALPHATEST_ON");
-                cloneMaterial.EnableKeyword("_ALPHABLEND_ON");
-                cloneMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                cloneMaterial.renderQueue = 3000;
-
-                Color color = cloneMaterial.color;
-                color.a = 0.4f; // Set alpha to 0.4
-                cloneMaterial.color = color;
-
-                renderer.material = cloneMaterial;
+                col.enabled = false;
             }
+            CubeMovement cloneController = clone.GetComponent<CubeMovement>();
+      
+            cloneController.player = this.player;
+
+            originalCube.GetComponent<CubeMovement>().PauseMovement();
+            cloneController.isPaused = true;
+            originalCubes.Add(originalCube);
+
+            recordedForces.Add(clone, new List<Vector3>());
         }
+
+        yield return StartCoroutine(SimulateClonesMovement());
+
+        foreach (KeyValuePair<GameObject, List<Vector3>> entry in recordedForces)
+        {
+            GameObject originalCube = originalCubes.Find(c => c.name == entry.Key.name.Replace("(Clone)", ""));
+            StartCoroutine(ApplyForcesSequentially(originalCube, entry.Value));
+            Destroy(entry.Key);
+        }
+        originalCubes.Clear();
+        recordedForces.Clear();
     }
 
-
-    void RecordClonePositions()
+    IEnumerator SimulateClonesMovement()
     {
-        foreach (var clone in cloneCubes)
+        float startTime = Time.time;
+        while (Time.time - startTime < simulationTime)
         {
-            var originalCube = originalCubes[cloneCubes.IndexOf(clone)];
-            futurePaths[originalCube].Enqueue(clone.transform.position);
+            foreach (GameObject clone in recordedForces.Keys)
+            {
+                Vector3 force = CalculateRandomDirection(clone);
+                clone.GetComponent<Rigidbody>().AddForce(force * 5f, ForceMode.VelocityChange);
+                recordedForces[clone].Add(force);
+            }
+            yield return new WaitForSeconds(2f);
         }
     }
 
-    void DestroyClones()
+    IEnumerator ApplyForcesSequentially(GameObject cube, List<Vector3> forces)
     {
-        foreach (var clone in cloneCubes)
+        Rigidbody rb = cube.GetComponent<Rigidbody>();
+        foreach (Vector3 force in forces)
         {
-            Destroy(clone);
+            rb.AddForce(force * 5.0f, ForceMode.VelocityChange);
+            yield return new WaitForSeconds(2f);
         }
-        cloneCubes.Clear();
+        foreach (Collider col in cube.GetComponentsInChildren<Collider>())
+        {
+            col.enabled = true;
+        }
+        cube.GetComponent<CubeMovement>().ResumeMovement();
     }
 
-    IEnumerator ApplyFutureMovement()
+
+    Vector3 CalculateRandomDirection(GameObject cube)
     {
-        float catchUpDuration = simulationTime * (1f - timeScale);
+        Vector3 directionToPlayer = (player.transform.position - cube.transform.position).normalized;
+        Vector3 randomDirection = new(
+            directionToPlayer.x + Random.Range(-2.0f, 2.0f),
+            0,
+            directionToPlayer.z + Random.Range(-2.0f, 2.0f)
+        );
 
-        foreach (var cube in originalCubes)
-        {
-            cube.GetComponent<CubeMovement>().StartMovement();
-        }
-
-        float catchUpTimer = 0;
-        while (catchUpTimer < catchUpDuration)
-        {
-            foreach (var cube in originalCubes)
-            {
-                if (futurePaths[cube].Count > 0)
-                {
-                    var targetPosition = futurePaths[cube].Dequeue();
-                    float catchUpSpeedFactor = 1f / timeScale;
-
-                    cube.transform.position = Vector3.Lerp(cube.transform.position, targetPosition, catchUpSpeedFactor * Time.deltaTime);
-                }
-            }
-            catchUpTimer += Time.deltaTime;
-            yield return null;
-        }
-
-        while (futurePaths[originalCubes[0]].Count > 0)
-        {
-            foreach (var cube in originalCubes)
-            {
-                if (futurePaths[cube].Count > 0)
-                {
-                    var targetPosition = futurePaths[cube].Dequeue();
-                    cube.transform.position = Vector3.Lerp(cube.transform.position, targetPosition, 0.1f);
-                }
-            }
-            yield return null;
-        }
-
-        foreach (var cube in originalCubes)
-        {
-            var cubeMovement = cube.GetComponent<CubeMovement>();
-            if (cubeMovement != null)
-            {
-                cubeMovement.UnfreezeMovement();
-            }
-        }
+        Vector3 adjustedDirection = (randomDirection.normalized + directionToPlayer).normalized;
+        return adjustedDirection;
     }
-
 }

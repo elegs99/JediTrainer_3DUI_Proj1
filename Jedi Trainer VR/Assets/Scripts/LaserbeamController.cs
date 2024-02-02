@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LaserbeamController : MonoBehaviour
 {
-    public float speed = 5.0f; // Public variable to control the speed
+    public float speed = 5.0f;
     private GameObject target;
     private PlayerController playerController;
     private bool switchedTarget = false;

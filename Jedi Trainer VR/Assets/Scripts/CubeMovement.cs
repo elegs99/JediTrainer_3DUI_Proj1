@@ -1,76 +1,68 @@
 using UnityEngine;
+using System.Collections;
 
 public class CubeMovement : MonoBehaviour
 {
+    public GameObject player;
     public float moveSpeed = 5f;
-    public float directionChangeInterval = 1f;
-    private bool isMoving = true;
-    private Transform playerTransform;
-    private Vector3 randomDirectionOffset;
-    private float directionChangeTimer;
-    private bool wasMovingBeforeFreeze;
+    public float randomness = 1.05f;
+    private Rigidbody rb;
+    public bool isPaused = false;
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerTransform = player.transform;
-        }
+        player = GameObject.FindWithTag("Player");
+        rb = GetComponent<Rigidbody>();
+        StartCoroutine(ApplyRandomForcesTowardsPlayer());
     }
 
-    void Update()
+    IEnumerator ApplyRandomForcesTowardsPlayer()
     {
-
-        if (isMoving && playerTransform != null)
+        while (true)
         {
-            MoveTowardsPlayer();
-        }
-    }
-
-    public void FreezeMovement()
-    {
-        wasMovingBeforeFreeze = isMoving;
-        StopMovement();
-    }
-
-    public void UnfreezeMovement()
-    {
-        if (wasMovingBeforeFreeze)
-        {
-            StartMovement();
-        }
-    }
-
-    void MoveTowardsPlayer()
-    {
-        if (playerTransform != null)
-        {
-            directionChangeTimer -= Time.deltaTime;
-            if (directionChangeTimer <= 0)
+            if (isPaused)
             {
-                ChangeDirection();
-                directionChangeTimer = directionChangeInterval;
+                yield return null;
             }
-
-            Vector3 targetDirection = (playerTransform.position - transform.position).normalized;
-            Vector3 moveDirection = (targetDirection + randomDirectionOffset).normalized;
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            else
+            {
+                Vector3 randomDirection = CalculateRandomDirection();
+                rb.AddForce(randomDirection * moveSpeed, ForceMode.VelocityChange);
+                yield return new WaitForSeconds(Random.Range(1f, 3f));
+            }
         }
     }
 
-    void ChangeDirection()
+    Vector3 CalculateRandomDirection()
     {
-        randomDirectionOffset = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+        Vector3 randomOffset = new (
+            Random.Range(-randomness, randomness),
+            0,
+            Random.Range(-randomness, randomness)
+        );
+        Vector3 slightRandomDirection = directionToPlayer + randomOffset * 0.1f;
+        return slightRandomDirection.normalized;
     }
 
-    public void StopMovement()
+
+    public void PauseMovement()
     {
-        isMoving = false;
+        isPaused = true;
+        if(rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
-    public void StartMovement()
+    public void ResumeMovement()
     {
-        isMoving = true;
+        isPaused = false;
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
     }
 }

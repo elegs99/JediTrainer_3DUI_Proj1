@@ -5,10 +5,10 @@ using UnityEngine;
 public class TrainingDroidController : MonoBehaviour
 {
     public float speed = 1;
-    public float rotateSpeed = 15; // Speed of rotation around the camera
+    public float rotateSpeed = 15;
     public GameObject laserbeam;
     public Transform laserLaunchPoint;
-
+    public Vector2Int orbitRadiusRange;
     private GameObject player;
     private PlayerController playerController;
 
@@ -27,7 +27,7 @@ public class TrainingDroidController : MonoBehaviour
         rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirection());
         shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
 
-        orbitRadius = Random.Range(2, 6);
+        orbitRadius = Random.Range(orbitRadiusRange.x, orbitRadiusRange.y);
     }
 
     private void Update()
@@ -83,7 +83,7 @@ public class TrainingDroidController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(2f, 5f)); // Random wait time between 2 and 5 seconds
+            yield return new WaitForSeconds(Random.Range(2f, 5f));
             shootLaser = true;
         }
     }
