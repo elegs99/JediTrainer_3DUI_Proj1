@@ -1,25 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class FutureMovement : MonoBehaviour
+public class ForceFuture : MonoBehaviour
 {
-    public GameObject player;
-    public float simulationTime = 5f;
+    public InputActionReference futureButton;
+    public float futureTimeLength = 5f;
+    
+    private PlayerController player;
+    private bool isSimulating = false;
     private List<GameObject> originalCubes = new List<GameObject>();
     private Dictionary<GameObject, List<Vector3>> recordedForces = new Dictionary<GameObject, List<Vector3>>();
 
 
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        player = gameObject.GetComponent<PlayerController>(); ;
+        futureButton.action.started += OnFutureButtonPressed;
+    }
+
+    void OnFutureButtonPressed(InputAction.CallbackContext context)
+    {
+        if(isSimulating)
         {
-            StartCoroutine(SimulateFutureMovement());
+            return;
         }
+        StartCoroutine(SimulateFutureMovement());
+    }
+
+    private void OnEnable()
+    {
+        futureButton.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        futureButton.action.started -= OnFutureButtonPressed;
+        futureButton.action.Disable();
     }
 
     IEnumerator SimulateFutureMovement()
     {
+        isSimulating = true;
         foreach (GameObject originalCube in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             GameObject clone = Instantiate(originalCube, originalCube.transform.position, originalCube.transform.rotation);
@@ -33,7 +56,7 @@ public class FutureMovement : MonoBehaviour
             }
             CubeMovement cloneController = clone.GetComponent<CubeMovement>();
       
-            cloneController.player = this.player;
+            cloneController.player = gameObject;
 
             originalCube.GetComponent<CubeMovement>().PauseMovement();
             cloneController.isPaused = true;
@@ -52,12 +75,13 @@ public class FutureMovement : MonoBehaviour
         }
         originalCubes.Clear();
         recordedForces.Clear();
+        isSimulating = false;
     }
 
     IEnumerator SimulateClonesMovement()
     {
         float startTime = Time.time;
-        while (Time.time - startTime < simulationTime)
+        while (Time.time - startTime < futureTimeLength)
         {
             foreach (GameObject clone in recordedForces.Keys)
             {
