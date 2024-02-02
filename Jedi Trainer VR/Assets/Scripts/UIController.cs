@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public PlayerController playerController;
     public Slider healthSlider;
     public Slider forceSlider;
     private Image healthFillImage;
-
+    private PlayerController playerController;
     void Start()
     {
+        playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
         healthFillImage = healthSlider.fillRect.GetComponentInChildren<Image>();
     }
 
