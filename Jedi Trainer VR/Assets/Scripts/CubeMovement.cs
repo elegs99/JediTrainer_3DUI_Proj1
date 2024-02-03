@@ -1,39 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
-public class AttackDroidController : MonoBehaviour
+public class CubeMovement : MonoBehaviour
 {
-    public float speed = 1;
-    public float hitRadius = .1f;
-    public float randomness = 1.05f;
+    public GameObject player;
     public float moveSpeed = 5f;
+    public float randomness = 1.05f;
+    private Rigidbody rb;
     public bool isPaused = false;
 
-    private bool hitPlayer = false; 
-    private GameObject player;
-    private PlayerController playerController;
-
-    private Rigidbody rb;
-    private float currentRotateSpeed;
-    private Coroutine rotateDirectionCoroutine;
     void Start()
     {
-        player = GameObject.Find("Player Target");
-        playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
+        player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody>();
         StartCoroutine(ApplyRandomForcesTowardsPlayer());
     }
 
-    // this part of the code isn't working right now will fix tmrw
-    // it's because the grab interactable diasables the collider on the saber when you are holding it
-    // Should put seperate collider on the blade and handle and update blade tag to saber
-    // Also remove collider scaling from the lightsaber controller script
-    void OnTriggerEnter(Collider collider) {
-        if (collider.gameObject.tag == "Saber") {
-            Destroy(gameObject);
-        }
-    }
     IEnumerator ApplyRandomForcesTowardsPlayer()
     {
         while (true)
@@ -54,7 +36,7 @@ public class AttackDroidController : MonoBehaviour
     Vector3 CalculateRandomDirection()
     {
         Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-        Vector3 randomOffset = new(
+        Vector3 randomOffset = new (
             Random.Range(-randomness, randomness),
             0,
             Random.Range(-randomness, randomness)
@@ -63,10 +45,11 @@ public class AttackDroidController : MonoBehaviour
         return slightRandomDirection.normalized;
     }
 
+
     public void PauseMovement()
     {
         isPaused = true;
-        if (rb == null)
+        if(rb == null)
         {
             rb = GetComponent<Rigidbody>();
         }
@@ -80,17 +63,6 @@ public class AttackDroidController : MonoBehaviour
         if (rb == null)
         {
             rb = GetComponent<Rigidbody>();
-        }
-    }
-    private void FaceTowardsTarget()
-    {
-        transform.LookAt(player.transform);
-    }
-
-    private void OnDestroy()
-    {
-        if (!hitPlayer) {
-            playerController.AlterForce(2);
         }
     }
 }
