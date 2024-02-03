@@ -93,13 +93,3 @@ public class ForceGrab : MonoBehaviour
         gripPressed = false;
     }
 }
-// selected state
-    // save reference position
-    // Disable gravity on gameobject selected
-    // Add force to gameobject in relation to hand movement up/down left/right and foward/back from refrence point
-    // When thumbstick is pulled back move the gameobject straight to users hand
-    // On grip button release enable gravity on object, set selected object to nothing
-
-    // You should add a method or logic within Update to handle when the grip button is released.
-    // This method would re-enable gravity on the selected object, move it towards the user's hand if required,
-    // and then clear the selectedObject reference.
