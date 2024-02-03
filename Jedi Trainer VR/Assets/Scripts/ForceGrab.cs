@@ -10,25 +10,36 @@ public class ForceGrab : MonoBehaviour
     private Transform referencePoint;
     private GameObject leftController;
     private GameObject rightController;
+    private PlayerController player;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        player = gameObject.GetComponent<PlayerController>();
+        rightController = GameObject.Find("Right Controller");
+        leftController = GameObject.Find("Left Controller");
+        gripButton.action.started += OnGripButtonPressed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        gripButton.action.Enable();
     }
-
-    // select state
-        // Find game object in front of hand
-        // Add random shake to it
-        // move to selected state and save refrence position if grab button pressed
-    // selected state
-        // Disable gravity on gameobject selected
-        // Add force to gameobject in relation to hand movement up/down left/right and foward/back from refrence point
-        // When thumbstick is pulled back move the gameobject straight to users hand
-
+    private void OnDisable()
+    {
+        gripButton.action.started -= OnGripButtonPressed;
+        gripButton.action.Disable();
+    }
+    private void Update() {
+        // selecting state
+            // When Hand is outstretched look for closest game object in front of hand
+            // Add random shake to it
+    }
+    private void OnGripButtonPressed(InputAction.CallbackContext context) {   
+        // selected state
+            // save reference position
+            // Disable gravity on gameobject selected
+            // Add force to gameobject in relation to hand movement up/down left/right and foward/back from refrence point
+            // When thumbstick is pulled back move the gameobject straight to users hand
+            // On grip button release enable gravity on object, set selected object to nothing
+    }
 }
