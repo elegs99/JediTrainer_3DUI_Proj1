@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GripPress",
+                    "name": "GripPressLeft",
                     "type": "Button",
                     "id": "4d19336b-a63c-46c5-ac00-78a6ddfe0992",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GripPressRight",
+                    "type": "Button",
+                    "id": "deb8c381-19d8-4762-8d27-98008ddc507b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -105,7 +114,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GripPress",
+                    "action": "GripPressLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,7 +125,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GripPress",
+                    "action": "GripPressRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

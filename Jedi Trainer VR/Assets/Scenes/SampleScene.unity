@@ -2458,7 +2458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf1aec604989cd4a8f0d7792f9d4aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gripButton: {fileID: -2296406231332694699, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
+  gripButtonLeft: {fileID: -2296406231332694699, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
+  gripButtonRight: {fileID: 6689226544149768727, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
   palmCenterRight: {fileID: 2016984758}
   palmCenterLeft: {fileID: 1219673480}
   mainCamera: {fileID: 1174931438}
@@ -2656,7 +2657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1480767358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3671,10 +3672,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -25.234
       objectReference: {fileID: 0}
-    - target: {fileID: 3716524050909350986, guid: 2ccd832508feb75458c628adcb80ead5, type: 3}
-      propertyPath: m_ForceGravityOnDetach
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5003645856011459802, guid: 2ccd832508feb75458c628adcb80ead5, type: 3}
       propertyPath: m_Name
       value: LightSaber (Red)
@@ -3700,10 +3697,6 @@ PrefabInstance:
     - target: {fileID: 2077858129929170306, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
       propertyPath: m_Name
       value: LightSaber (Green)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7285126515367812559, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
-      propertyPath: m_ForceGravityOnDetach
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8505331213951050218, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
       propertyPath: m_LocalPosition.x

@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 4021934773095066601}
   - component: {fileID: 1514846005526933851}
   - component: {fileID: 3601071268313888456}
-  - component: {fileID: 363656823687499495}
   m_Layer: 0
   m_Name: BotBody
   m_TagString: Untagged
@@ -172,28 +171,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &363656823687499495
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3209287930610936120}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6930775063614245547, guid: 519827e215ee0814ca4ec186f5d96d99, type: 3}
 --- !u!1 &6239952216078727340
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,3 +303,4 @@ MonoBehaviour:
   laserbeam: {fileID: 6914592063930039172, guid: 23bedb22dbe279443b313ecbf28c3bef, type: 3}
   laserLaunchPoint: {fileID: 5063045185877964917}
   orbitRadiusRange: {x: 3, y: 9}
+  isPaused: 0
