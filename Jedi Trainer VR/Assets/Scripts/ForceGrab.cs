@@ -50,14 +50,42 @@ public class ForceGrab : MonoBehaviour
     }
 
     private GameObject PerformRaycast(Transform palm)
-    {
+        {
         Vector3 direction = (palm.position - mainCamera.transform.position).normalized;
-        if (Physics.Raycast(palm.position, direction*10, out RaycastHit hit, 10f)) {
-            if (hit.transform.CompareTag("ForceGrabbable")) {
-                return hit.collider.gameObject;
+        float raycastDistance = 10f; // Maximum distance for the raycast
+        float gridSpacing = 0.1f; // Spacing between the rays in the grid
+
+        // Define offsets for a 3x3 grid
+        Vector2[] offsets = new Vector2[]
+        {
+            new Vector2(-gridSpacing, gridSpacing), // Top-left
+            new Vector2(0, gridSpacing), // Top-center
+            new Vector2(gridSpacing, gridSpacing), // Top-right
+            new Vector2(-gridSpacing, 0), // Middle-left
+            new Vector2(0, 0), // Middle-center
+            new Vector2(gridSpacing, 0), // Middle-right
+            new Vector2(-gridSpacing, -gridSpacing), // Bottom-left
+            new Vector2(0, -gridSpacing), // Bottom-center
+            new Vector2(gridSpacing, -gridSpacing) // Bottom-right
+        };
+
+        foreach (Vector2 offset in offsets)
+        {
+            // Calculate the ray's origin for the current offset
+            Vector3 rayOrigin = palm.position + palm.right * offset.x + palm.up * offset.y;
+
+            // Perform the raycast
+            if (Physics.Raycast(rayOrigin, direction*raycastDistance, out RaycastHit hit, raycastDistance))
+            {
+                if (hit.transform.CompareTag("ForceGrabbable"))
+                {
+                    // Return the first 'ForceGrabbable' object hit
+                    return hit.collider.gameObject;
+                }
             }
         }
-        return null;
+
+        return null; // Return null if no 'ForceGrabbable' objects are hit
     }
 
     private void ApplySelectedState()
