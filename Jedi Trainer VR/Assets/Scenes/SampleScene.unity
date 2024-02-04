@@ -2438,7 +2438,7 @@ MonoBehaviour:
   palmCenterRight: {fileID: 2016984758}
   palmCenterLeft: {fileID: 1219673480}
   mainCamera: {fileID: 1174931438}
-  forceMultiplier: 0.5
+  forceMultiplier: 0.7
 --- !u!1 &1219673479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,6 +3647,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -25.234
       objectReference: {fileID: 0}
+    - target: {fileID: 3716524050909350986, guid: 2ccd832508feb75458c628adcb80ead5, type: 3}
+      propertyPath: m_ForceGravityOnDetach
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5003645856011459802, guid: 2ccd832508feb75458c628adcb80ead5, type: 3}
       propertyPath: m_Name
       value: LightSaber (Red)
@@ -3672,6 +3676,10 @@ PrefabInstance:
     - target: {fileID: 2077858129929170306, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
       propertyPath: m_Name
       value: LightSaber (Green)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285126515367812559, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
+      propertyPath: m_ForceGravityOnDetach
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8505331213951050218, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
       propertyPath: m_LocalPosition.x
