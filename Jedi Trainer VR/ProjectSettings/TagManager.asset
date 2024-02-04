@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Saber
+  - ForceGrabbable
   layers:
   - Default
   - TransparentFX
