@@ -31,7 +31,7 @@ public class ForceGrab : MonoBehaviour
 
     private void Update()
     {
-        if (isGripping) {
+        if (isGripping && selectedObject != null) {
             ApplySelectedState();
         } else {
             AttemptSelectingState();
@@ -147,6 +147,11 @@ public class ForceGrab : MonoBehaviour
             selectedObject = null;
             rbTarget = null;
         }
+        isGripping = false;
+    }
+    public void ReleaseSelectedObject()
+    {
+        selectedObject = null;
         isGripping = false;
     }
 }
