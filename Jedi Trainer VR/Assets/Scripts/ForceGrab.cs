@@ -105,7 +105,7 @@ public class ForceGrab : MonoBehaviour
         float distanceToHand = forceDirection.magnitude;
         Vector3 pullInForce = pullDirection.normalized * Mathf.InverseLerp(6, 0, distanceToHand);
         rbTarget.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
-        rbTarget.AddForce(pullInForce, ForceMode.Acceleration);
+        rbTarget.AddForce(pullInForce * forceMultiplier, ForceMode.Acceleration);
     }
 
     private void CapVelocity(Rigidbody rb)
@@ -133,7 +133,7 @@ public class ForceGrab : MonoBehaviour
             rbTarget = selectedObject.GetComponent<Rigidbody>();
             if (rbTarget != null) {
                 rbTarget.useGravity = false;
-                rbTarget.drag = 5;
+                rbTarget.drag = 3;
             }
             isGripping = true;
         }
