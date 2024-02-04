@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +10,7 @@ using UnityEngine.InputSystem.Utilities;
 public class ForceGrab : MonoBehaviour
 {
     public InputActionReference gripButton;
-    public Transform PalmCenterRight;
+    public Transform palmCenterRight;
     public GameObject mainCamera;
     public float forceMultiplier = .5f;
 
@@ -51,44 +53,59 @@ public class ForceGrab : MonoBehaviour
 
     private void SelectingState() {
         if (player.IsHandExtended(rightController.transform) > .5f) {
-            Vector3 forceDirection = PalmCenterRight.transform.position - mainCamera.transform.position;
-            if (Physics.Raycast(PalmCenterRight.position, forceDirection * 10, out RaycastHit hit, 10)) { // Adjust the distance as needed
+            Vector3 forceDirection = palmCenterRight.transform.position - mainCamera.transform.position;
+            // Should have a 3x3 grid of ray cast so corners of the hands detect stuff too
+            // Write external raycast function if time
+            if (Physics.Raycast(palmCenterRight.position, forceDirection * 10, out RaycastHit hit, 10)) { // Adjust the distance as needed
                 if (hit.transform.CompareTag("ForceGrabbable")) {
                     selectedObject = hit.collider.gameObject;
                     // Add a slight random shake to the object to indicate it can be interacted with
-                    selectedObject.transform.position += Random.insideUnitSphere * 0.005f; // Adjust the shake intensity as needed
+                    selectedObject.transform.position += UnityEngine.Random.insideUnitSphere * 0.005f; // Adjust the shake intensity as needed
                 }
-            } else {
-                selectedObject = null;
             }
         }
     }
     private void SelectedState() {
-        // Add force to gameobject in relation to hand movement up/down left/right and foward/back from refrence point
-        // Calculate the new position for the object based on the hand's current position
-        Vector3 forceDirection = PalmCenterRight.position - referencePoint.position;
-        if (forceDirection.magnitude < .1) {
-            rbTarget.drag = 5;
-        } else {
-            rbTarget.drag = 0;
-        }
-        if (rbTarget.velocity.magnitude > 1) rbTarget.velocity = Vector3.Scale(rbTarget.velocity.normalized, Vector3.one);
+        // Add force to gameobject in relation to hand movement up/down left/right and forward/back from reference point
+        Vector3 forceDirection = palmCenterRight.position - referencePoint.position;
+
+        // Calculate additional force direction
+        Vector3 pullInForce = palmCenterRight.position - selectedObject.transform.position;
+        float distance2Hand = pullInForce.magnitude;
+
+        // Scale additional force so it's near 0 when distance2Hand is above 4 and close to 1 as distance2Hand approaches 0
+        float scaledPullInForceMagnitude = Mathf.InverseLerp(4, 0, distance2Hand);
+        Vector3 scaledPullInForce = pullInForce.normalized * scaledPullInForceMagnitude;
+
         rbTarget.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
+        rbTarget.AddForce(scaledPullInForce * 1, ForceMode.Acceleration);
+
+        // Cap the velocity at a maximum of 1 if it exceeds that
+        if (rbTarget.velocity.magnitude > 1) {
+            rbTarget.velocity = rbTarget.velocity.normalized;
+        }
+        selectedObject.transform.position += UnityEngine.Random.insideUnitSphere * 0.002f;
     }
     private void OnGripButtonPressed(InputAction.CallbackContext context) {
         if (selectedObject != null) {
-            if (!gripPressed) referencePoint.position = PalmCenterRight.transform.position; // Save the initial grab point
-            rbTarget = selectedObject.GetComponent<Rigidbody>();
-            if (rbTarget != null) {
-                rbTarget.useGravity = false;
+            float distance2Hand = (palmCenterRight.position - selectedObject.transform.position).magnitude;
+            if (distance2Hand > .2f) {
+                referencePoint.position = palmCenterRight.transform.position; // Save the initial grab point
+                rbTarget = selectedObject.GetComponent<Rigidbody>();
+                if (rbTarget != null) {
+                    rbTarget.useGravity = false;
+                    rbTarget.drag = 5;
+                }
+                gripPressed = true;
             }
-            gripPressed = true;
         }
     }
     private void OnGripButtonReleased(InputAction.CallbackContext context) {
         if (gripPressed && rbTarget != null) {
             rbTarget.useGravity = true;
+            rbTarget.drag = 0;
             selectedObject = null;
+            rbTarget = null;
         }
         gripPressed = false;
     }

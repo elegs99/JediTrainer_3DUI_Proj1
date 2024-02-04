@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5548910425078003115}
   m_Layer: 0
   m_Name: LightSaber (Green)
-  m_TagString: Untagged
+  m_TagString: ForceGrabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
