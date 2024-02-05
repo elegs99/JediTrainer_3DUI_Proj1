@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 public class ForceLightning : MonoBehaviour
 {
     public InputActionReference lightningButton;
     public ParticleSystem lightningEffect;
     public Transform referencePoint;
+    public float extendHandThreshold = .8f;
 
     private GameObject leftController;
     private GameObject rightController;
@@ -37,21 +39,18 @@ public class ForceLightning : MonoBehaviour
 
     private void OnLightningButtonPressed(InputAction.CallbackContext context)
     {
-        if (CheckIfExtended(rightController.transform, referencePoint))
-        {
-            ShootLightning();
+        var device = context.control.device;
+        if (device.usages.Contains(CommonUsages.LeftHand)) {
+            if (player.IsHandExtended(leftController.transform) > extendHandThreshold){
+                ShootLightning();
+            }
+        }
+        else {
+            if (player.IsHandExtended(rightController.transform) > extendHandThreshold){
+                ShootLightning();
+            }
         }
     }
-
-    private bool CheckIfExtended(Transform controllerTransform, Transform referencePoint)
-    {
-        Vector3 armVector = controllerTransform.position - referencePoint.position;
-        Vector3 torsoDirection = referencePoint.forward;
-        float armTorsoAngle = Vector3.Angle(armVector, torsoDirection);
-        float armLength = armVector.magnitude;
-        return armTorsoAngle >= angleThreshold && armLength >= extensionThreshold;
-    }
-
     private void ShootLightning()
     {
         if (player.playerForce > 0)
