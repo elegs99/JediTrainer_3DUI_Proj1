@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             playerForce = 0;
         }
-        Debug.Log(playerForce);
+        //Debug.Log(playerForce);
     }
 
     private void Die()
