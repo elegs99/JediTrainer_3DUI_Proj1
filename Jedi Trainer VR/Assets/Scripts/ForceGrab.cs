@@ -80,7 +80,7 @@ public class ForceGrab : MonoBehaviour
             if (isTriggerPressed) {
                 GameObject targetEnemy = GameObject.FindWithTag("Enemy");
                 if (targetEnemy != null) {
-                    ShootObjectAtEnemy();
+                    ShootObjectAtEnemy(targetEnemy);
                 }
                 //StartCoroutine(ShootObjectAtEnemy());
             } else {
@@ -195,13 +195,13 @@ public class ForceGrab : MonoBehaviour
         isTriggerPressed = false;
         referencePoint.position = currentPalm.position;
     }
-    private IEnumerator ShootObjectAtEnemy()
+    private IEnumerator ShootObjectAtEnemy(GameObject targetEnemy)
     {
-        GameObject targetEnemy = GameObject.FindWithTag("Enemy");
-        float speed = 5;
+        Debug.Log("Shooting object");
+        float speed = 10;
         Vector3 targetDirection = targetEnemy.transform.position - rbTarget.transform.position;
         rbTarget.AddForce(targetDirection * speed, ForceMode.VelocityChange);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1);
         Destroy(targetEnemy);
         Destroy(selectedObject);
         ReleaseSelectedObject();
