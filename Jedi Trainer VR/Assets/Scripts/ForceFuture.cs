@@ -124,7 +124,6 @@ public class ForceFuture : MonoBehaviour
 
     }
 
-
     Vector3 CalculateRandomDirection(GameObject enemy)
     {
         Vector3 directionToPlayer = (player.transform.position - enemy.transform.position).normalized;
