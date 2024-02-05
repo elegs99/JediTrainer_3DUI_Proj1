@@ -6,49 +6,61 @@ using UnityEngine.InputSystem.Utilities;
 
 public class ForceLightning : MonoBehaviour
 {
-    public InputActionReference lightningButton;
-    public ParticleSystem lightningEffect;
-    public Transform referencePoint;
-    public float extendHandThreshold = .8f;
+    public InputActionReference triggerInputLeft;
+    public InputActionReference triggerInputRight;
+    public ParticleSystem lightningEffectLeft;
+    public ParticleSystem lightningEffectRight;
+    public float extensionThreshold = .75f;
 
     private GameObject leftController;
     private GameObject rightController;
     private PlayerController player;
-
-    public float extensionThreshold = 0.4f;
-    public float angleThreshold = 35f;
+    private ParticleSystem lightningEffect;
 
 
     private void Awake()
     {
-        player = gameObject.GetComponent<PlayerController>();
+        player = GetComponent<PlayerController>();
         rightController = GameObject.Find("Right Controller");
         leftController = GameObject.Find("Left Controller");
-        lightningButton.action.started += OnLightningButtonPressed;
+        triggerInputLeft.action.started += context => OnTriggerPressed(isRightHand: false);
+        triggerInputLeft.action.canceled += context => OnTriggerReleased(isRightHand: false);
+        triggerInputRight.action.started += context => OnTriggerPressed(isRightHand: true);
+        triggerInputRight.action.canceled += context => OnTriggerReleased(isRightHand: true);
     }
 
     private void OnEnable()
     {
-        lightningButton.action.Enable();
+        triggerInputLeft.action.Enable();
+        triggerInputRight.action.Enable();
     }
     private void OnDisable()
     {
-        lightningButton.action.started -= OnLightningButtonPressed;
-        lightningButton.action.Disable();
+        triggerInputLeft.action.Disable();
+        triggerInputRight.action.Disable();
     }
 
-    private void OnLightningButtonPressed(InputAction.CallbackContext context)
+    private void OnTriggerPressed(bool isRightHand)
     {
-        var device = context.control.device;
-        if (device.usages.Contains(CommonUsages.LeftHand)) {
-            if (player.IsHandExtended(leftController.transform) > extendHandThreshold){
+        lightningEffect = isRightHand ? lightningEffectRight : lightningEffectLeft;
+        if (isRightHand) {
+            if (player.IsHandExtended(rightController.transform) > extensionThreshold){
                 ShootLightning();
             }
         }
         else {
-            if (player.IsHandExtended(rightController.transform) > extendHandThreshold){
+            if (player.IsHandExtended(leftController.transform) > extensionThreshold){
                 ShootLightning();
             }
+        }
+    }
+    private void OnTriggerReleased(bool isRightHand)
+    {
+        if (isRightHand) {
+            lightningEffectRight.Stop();
+        }
+        else {
+            lightningEffectLeft.Stop();
         }
     }
     private void ShootLightning()
