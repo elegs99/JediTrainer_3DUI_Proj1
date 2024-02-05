@@ -1,0 +1,1484 @@
+fileFormatVersion: 2
+guid: 2070b49236315354c8215590d0182784
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: All
+    100002: BeakDown
+    100004: BeakUp
+    100006: Body
+    100008: Body2
+    100010: FingerBack1.L
+    100012: FingerBack1.R
+    100014: FingerBack2.L
+    100016: FingerBack2.R
+    100018: FingerOne1.L
+    100020: FingerOne1.R
+    100022: FingerOne2.L
+    100024: FingerOne2.R
+    100026: FingerOne3.L
+    100028: FingerOne3.R
+    100030: FingerThree1.L
+    100032: FingerThree1.R
+    100034: FingerThree2.L
+    100036: FingerThree2.R
+    100038: FingerThree3.L
+    100040: FingerThree3.R
+    100042: FingerTwo1.L
+    100044: FingerTwo1.R
+    100046: FingerTwo2.L
+    100048: FingerTwo2.R
+    100050: FingerTwo3.L
+    100052: FingerTwo3.R
+    100054: Head
+    100056: IK.Leg.L
+    100058: IK.Leg.R
+    100060: Leg1.L
+    100062: Leg1.R
+    100064: Leg2.L
+    100066: Leg2.R
+    100068: Leg3.L
+    100070: Leg3.R
+    100072: Neck1
+    100074: Neck2
+    100076: Pen1.L
+    100078: Pen1.R
+    100080: Pen2.L
+    100082: Pen2.R
+    100084: Pen3.L
+    100086: Pen3.R
+    100088: Pen4.L
+    100090: Pen4.R
+    100092: Pen5.L
+    100094: Pen5.R
+    100096: Pen6.L
+    100098: Pen6.R
+    100100: //RootNode
+    100102: Vulture_LOD0
+    100104: Vulture_LOD1
+    100106: Vulture_LOD2
+    100108: Vulture_LOD3
+    100110: VultureSkeleton
+    100112: Wing1.L
+    100114: Wing1.R
+    100116: Wing2.L
+    100118: Wing2.R
+    100120: Wing3.L
+    100122: Wing3.R
+    100124: Wing4.L
+    100126: Wing4.R
+    400000: All
+    400002: BeakDown
+    400004: BeakUp
+    400006: Body
+    400008: Body2
+    400010: FingerBack1.L
+    400012: FingerBack1.R
+    400014: FingerBack2.L
+    400016: FingerBack2.R
+    400018: FingerOne1.L
+    400020: FingerOne1.R
+    400022: FingerOne2.L
+    400024: FingerOne2.R
+    400026: FingerOne3.L
+    400028: FingerOne3.R
+    400030: FingerThree1.L
+    400032: FingerThree1.R
+    400034: FingerThree2.L
+    400036: FingerThree2.R
+    400038: FingerThree3.L
+    400040: FingerThree3.R
+    400042: FingerTwo1.L
+    400044: FingerTwo1.R
+    400046: FingerTwo2.L
+    400048: FingerTwo2.R
+    400050: FingerTwo3.L
+    400052: FingerTwo3.R
+    400054: Head
+    400056: IK.Leg.L
+    400058: IK.Leg.R
+    400060: Leg1.L
+    400062: Leg1.R
+    400064: Leg2.L
+    400066: Leg2.R
+    400068: Leg3.L
+    400070: Leg3.R
+    400072: Neck1
+    400074: Neck2
+    400076: Pen1.L
+    400078: Pen1.R
+    400080: Pen2.L
+    400082: Pen2.R
+    400084: Pen3.L
+    400086: Pen3.R
+    400088: Pen4.L
+    400090: Pen4.R
+    400092: Pen5.L
+    400094: Pen5.R
+    400096: Pen6.L
+    400098: Pen6.R
+    400100: //RootNode
+    400102: Vulture_LOD0
+    400104: Vulture_LOD1
+    400106: Vulture_LOD2
+    400108: Vulture_LOD3
+    400110: VultureSkeleton
+    400112: Wing1.L
+    400114: Wing1.R
+    400116: Wing2.L
+    400118: Wing2.R
+    400120: Wing3.L
+    400122: Wing3.R
+    400124: Wing4.L
+    400126: Wing4.R
+    4300000: Vulture_LOD0
+    4300002: Vulture_LOD1
+    4300004: Vulture_LOD2
+    4300006: Vulture_LOD3
+    7400000: Vulrture_Idle
+    7400002: VultureSkeleton|_Idle.001
+    7400004: Vulrture_Fly
+    7400006: Vulrture_FlyWaveWings
+    7400008: Vulrture_IdleHeadDown
+    7400010: Vulrture_IdleHeadRotate
+    7400012: Vulrture_Landing
+    7400014: Vulrture_TakeOff
+    7400016: Vulrture_Walk
+    9500000: //RootNode
+    13700000: Vulture_LOD0
+    13700002: Vulture_LOD1
+    13700004: Vulture_LOD2
+    13700006: Vulture_LOD3
+    20500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Vulrture_Idle
+      takeName: VultureSkeleton|_Idle
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vulrture_Fly
+      takeName: VultureSkeleton|Fly
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vulrture_FlyWaveWings
+      takeName: VultureSkeleton|FlyWaveWings
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vulrture_IdleHeadDown
+      takeName: VultureSkeleton|IdleHeadDown
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vulrture_IdleHeadRotate
+      takeName: VultureSkeleton|IdleHeadRotate
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vulrture_Landing
+      takeName: VultureSkeleton|Landing
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vulrture_TakeOff
+      takeName: VultureSkeleton|TakeOff
+      firstFrame: 0
+      lastFrame: 46
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vulrture_Walk
+      takeName: VultureSkeleton|Walk
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vulture_LOD0
+        weight: 1
+      - path: Vulture_LOD1
+        weight: 1
+      - path: Vulture_LOD2
+        weight: 1
+      - path: Vulture_LOD3
+        weight: 1
+      - path: VultureSkeleton
+        weight: 1
+      - path: VultureSkeleton/All
+        weight: 1
+      - path: VultureSkeleton/All/Body
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakDown
+        weight: 1
+      - path: VultureSkeleton/All/Body/Body2/Neck1/Neck2/Head/BeakUp
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerBack1.L/FingerBack2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerOne1.L/FingerOne2.L/FingerOne3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerThree1.L/FingerThree2.L/FingerThree3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.L/Leg2.L/Leg3.L/FingerTwo1.L/FingerTwo2.L/FingerTwo3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerBack1.R/FingerBack2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerOne1.R/FingerOne2.R/FingerOne3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerThree1.R/FingerThree2.R/FingerThree3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Leg1.R/Leg2.R/Leg3.R/FingerTwo1.R/FingerTwo2.R/FingerTwo3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Pen1.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Pen2.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen3.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Pen4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen5.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.L/Wing2.L/Wing3.L/Wing4.L/Pen6.L
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Pen1.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Pen2.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen3.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Pen4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen5.R
+        weight: 1
+      - path: VultureSkeleton/All/Body/Wing1.R/Wing2.R/Wing3.R/Wing4.R/Pen6.R
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.L
+        weight: 1
+      - path: VultureSkeleton/All/IK.Leg.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
