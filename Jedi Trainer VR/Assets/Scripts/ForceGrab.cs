@@ -1,11 +1,14 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System;
 
 public class ForceGrab : MonoBehaviour
 {
     public InputActionReference gripButtonLeft;
     public InputActionReference gripButtonRight;
+    public InputActionReference anyTriggerButton;
     public Transform palmCenterRight;
     public Transform palmCenterLeft;
     public GameObject mainCamera;
@@ -18,15 +21,20 @@ public class ForceGrab : MonoBehaviour
     private Rigidbody rbTarget;
     private bool isGripping = false;
     private PlayerController player;
+    private ForceLightning lightningController;
     private bool isRightHand = true;
+    private bool isTriggerPressed = false;
 
     private void Awake()
     {
         player = GetComponent<PlayerController>();
+        lightningController = GetComponent<ForceLightning>();
         gripButtonLeft.action.started += context => OnGripButtonPressed(context, _isRightHand: false);
         gripButtonLeft.action.canceled += context => OnGripButtonReleased(_isRightHand: false);
         gripButtonRight.action.started += context => OnGripButtonPressed(context, _isRightHand: true);
         gripButtonRight.action.canceled += context => OnGripButtonReleased(_isRightHand: true);
+        anyTriggerButton.action.started += context => OnTriggerPressed();
+        anyTriggerButton.action.canceled += context => OnTriggerReleased();
         referencePoint = new GameObject("ReferencePoint").transform;
     }
 
@@ -34,20 +42,23 @@ public class ForceGrab : MonoBehaviour
     {
         gripButtonLeft.action.Enable();
         gripButtonRight.action.Enable();
+        anyTriggerButton.action.Enable();
     }
 
     private void OnDisable()
     {
         gripButtonLeft.action.Disable();
         gripButtonRight.action.Disable();
+        anyTriggerButton.action.Disable();
     }
-
 
     private void Update()
     {
         if (isGripping && selectedObject != null) {
+            lightningController.enabled = false;// disable force lighting script
             ApplySelectedState();
         } else {
+            lightningController.enabled = true;// enable force lighting script
             AttemptSelectingState();
         }
     }
@@ -61,6 +72,36 @@ public class ForceGrab : MonoBehaviour
                 JiggleObject(potentialSelection, 0.005f);
             }
         }
+    }
+
+    private void ApplySelectedState()
+    {
+        if (rbTarget != null) {
+            if (isTriggerPressed) {
+                GameObject targetEnemy = GameObject.FindWithTag("Enemy");
+                if (targetEnemy != null) {
+                    ShootObjectAtEnemy();
+                }
+                //StartCoroutine(ShootObjectAtEnemy());
+            } else {
+                currentPalm = isRightHand ? palmCenterRight : palmCenterLeft;
+                Vector3 forceDirection = currentPalm.position - referencePoint.position; // Force based on hand movement
+                Vector3 pullDirection = currentPalm.position - selectedObject.transform.position; // Force pulling towards hand
+                ApplyForces(forceDirection, pullDirection);
+                CapVelocity(rbTarget);
+                JiggleObject(selectedObject, 0.002f);
+            }
+        }
+    }
+    
+    // ADD MORE FORCES HERE 
+    // Thumbstick to increase pull force
+    private void ApplyForces(Vector3 forceDirection, Vector3 pullDirection)
+    {
+        float distanceToHand = forceDirection.magnitude;
+        Vector3 pullInForce = pullDirection.normalized * Mathf.InverseLerp(1, 0, distanceToHand)*5; // closer to hand more force pulls
+        rbTarget.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
+        rbTarget.AddForce(pullInForce * forceMultiplier, ForceMode.Acceleration);
     }
 
     private GameObject PerformRaycast(Transform palm)
@@ -98,28 +139,6 @@ public class ForceGrab : MonoBehaviour
             }
         }
         return null; // Return null if no 'ForceGrabbable' objects are hit
-    }
-
-    private void ApplySelectedState()
-    {
-        if (rbTarget != null) {
-            currentPalm = isRightHand ? palmCenterRight : palmCenterLeft;
-            Vector3 forceDirection = currentPalm.position - referencePoint.position; // Force based on hand movement
-            Vector3 pullDirection = currentPalm.position - selectedObject.transform.position; // Force pulling towards hand
-            ApplyForces(forceDirection, pullDirection);
-            CapVelocity(rbTarget);
-            JiggleObject(selectedObject, 0.002f);
-        }
-    }
-
-    // ADD MORE FORCES HERE 
-    // Thumbstick to increase pull force
-    private void ApplyForces(Vector3 forceDirection, Vector3 pullDirection)
-    {
-        float distanceToHand = forceDirection.magnitude;
-        Vector3 pullInForce = pullDirection.normalized * Mathf.InverseLerp(1, 0, distanceToHand)*5; // closer to hand more force pulls
-        rbTarget.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
-        rbTarget.AddForce(pullInForce * forceMultiplier, ForceMode.Acceleration);
     }
 
     private void CapVelocity(Rigidbody rb)
@@ -167,10 +186,31 @@ public class ForceGrab : MonoBehaviour
         isGripping = false;
     }
 
+    private void OnTriggerPressed()
+    {
+        isTriggerPressed = true;
+    }
+    private void OnTriggerReleased()
+    {
+        isTriggerPressed = false;
+        referencePoint.position = currentPalm.position;
+    }
+    private IEnumerator ShootObjectAtEnemy()
+    {
+        GameObject targetEnemy = GameObject.FindWithTag("Enemy");
+        float speed = 5;
+        Vector3 targetDirection = targetEnemy.transform.position - rbTarget.transform.position;
+        rbTarget.AddForce(targetDirection * speed, ForceMode.VelocityChange);
+        yield return new WaitForSeconds(.5f);
+        Destroy(targetEnemy);
+        Destroy(selectedObject);
+        ReleaseSelectedObject();
+    }
     public void ReleaseSelectedObject()
     {
         potentialSelection = null;
         selectedObject = null;
         isGripping = false;
+        isTriggerPressed = false;
     }
 }

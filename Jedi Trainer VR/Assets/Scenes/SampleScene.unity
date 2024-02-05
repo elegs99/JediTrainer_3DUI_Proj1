@@ -2464,6 +2464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gripButtonLeft: {fileID: -2296406231332694699, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
   gripButtonRight: {fileID: 6689226544149768727, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
+  anyTriggerButton: {fileID: 391302137966397320, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
   palmCenterRight: {fileID: 2016984758}
   palmCenterLeft: {fileID: 1219673480}
   mainCamera: {fileID: 1174931438}
