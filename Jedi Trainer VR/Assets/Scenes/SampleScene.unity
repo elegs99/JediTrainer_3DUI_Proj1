@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7351528368435192563, guid: 55934ea8960d9ea43941241cbcae3c97, type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2465,7 +2469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0492a2dc19fe5874fbf92351cba887dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 50
+  playerHealth: 100
   playerForce: 10
   bodyCenterPoint: {fileID: 217439304}
 --- !u!114 &1177691011
@@ -3727,6 +3731,10 @@ PrefabInstance:
     - target: {fileID: 7351528368435192563, guid: 55934ea8960d9ea43941241cbcae3c97, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351528368435192563, guid: 55934ea8960d9ea43941241cbcae3c97, type: 3}
+      propertyPath: simulationSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

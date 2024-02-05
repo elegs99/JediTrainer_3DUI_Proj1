@@ -36,15 +36,16 @@ public class PlayerController : MonoBehaviour
         }
         else if (playerHealth <= 0)
         {
+            playerHealth = 0;
             Die();
         }
-        Debug.Log(playerHealth);
+        //Debug.Log(playerHealth);
     }
 
     public void AlterForce(int force)
     {
         playerForce += force;
-        if (playerForce <= 10)
+        if (playerForce >= 10)
         {
             playerForce = 10;
         }
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             playerForce = 0;
         }
+        Debug.Log(playerForce);
     }
 
     private void Die()

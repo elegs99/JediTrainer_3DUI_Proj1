@@ -137,7 +137,7 @@ public class ForceGrab : MonoBehaviour
     private void OnGripButtonPressed(InputAction.CallbackContext context, bool _isRightHand)
     {
         isRightHand = _isRightHand;
-        Debug.Log($"{(isRightHand ? "Right" : "Left")} hand grip press");
+        //Debug.Log($"{(isRightHand ? "Right" : "Left")} hand grip press");
         currentPalm = isRightHand ? palmCenterRight : palmCenterLeft;
 
         potentialSelection = PerformRaycast(currentPalm);
