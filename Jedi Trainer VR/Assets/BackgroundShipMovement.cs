@@ -20,7 +20,7 @@ public class BackgroundShipMovement : MonoBehaviour
         } else if (resetTimer == resetTime) {
             transform.position = new Vector3(-3000,150,3000);
         }else {
-            transform.position = new Vector3(resetPoint.x, 150, zPoint+Random.Range(-100,100));
+            transform.position = new Vector3(resetPoint.x, 150, zPoint+Random.Range(-100,500));
             resetTimer = 0;
         }
         resetTimer++;
