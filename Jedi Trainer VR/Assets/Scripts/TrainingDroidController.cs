@@ -83,6 +83,7 @@ public class TrainingDroidController : MonoBehaviour
             currentRotateSpeed = -currentRotateSpeed; // Reverse rotation direction
         }
     }
+
     private IEnumerator Wait2ShootLaser()
     {
         while (true)
@@ -91,6 +92,7 @@ public class TrainingDroidController : MonoBehaviour
             shootLaser = true;
         }
     }
+
     private void ShootPlayer()
     {
         if (shootLaser && laserbeam != null && laserLaunchPoint != null)

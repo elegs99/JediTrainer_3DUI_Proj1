@@ -46,6 +46,7 @@ public class AttackDroidController : MonoBehaviour
             {
                 Vector3 randomDirection = CalculateRandomDirection();
                 rb.AddForce(randomDirection * moveSpeed, ForceMode.VelocityChange);
+                FaceTowardsTarget();
                 yield return new WaitForSeconds(Random.Range(1f, 3f));
             }
         }

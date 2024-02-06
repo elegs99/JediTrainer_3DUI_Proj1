@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) // XR rig has no collider so this won't be triggered
     {
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
             AlterHealth(-15);
