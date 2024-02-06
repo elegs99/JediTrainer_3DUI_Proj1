@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4021934773095066601}
   - component: {fileID: 1514846005526933851}
   - component: {fileID: 3601071268313888456}
+  - component: {fileID: 1408108263851008275}
   m_Layer: 0
   m_Name: BotBody
   m_TagString: Untagged
@@ -171,6 +172,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &1408108263851008275
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209287930610936120}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.028
+  m_Center: {x: 0.007, y: 0, z: -0.001}
 --- !u!1 &6239952216078727340
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,15 +251,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8976233797925999245}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7161984, z: 0, w: 0.6978968}
-  m_LocalPosition: {x: 0.105, y: 1.743, z: 2.573}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4021934773095066601}
   - {fileID: 8858611032114536195}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -91.483, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!135 &1793504558087293837
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -257,8 +279,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.5
-  m_Center: {x: 0, y: -0.21, z: -0.87}
+  m_Radius: 3.2
+  m_Center: {x: 0, y: -0.1, z: -0.8}
 --- !u!54 &8115640030387405689
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 1993775378908618551}
   - component: {fileID: 6756443845156603049}
   - component: {fileID: 433566094743588032}
+  - component: {fileID: 5495103568823560019}
   m_Layer: 0
   m_Name: Attack Droid
   m_TagString: Untagged
@@ -192,6 +193,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &5495103568823560019
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3581827641425394796}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3.7
+  m_Center: {x: 0.62761027, y: -0.09068241, z: -0.14342296}
 --- !u!1 &5341661523106822021
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +228,7 @@ GameObject:
   - component: {fileID: 3134709884501206299}
   m_Layer: 0
   m_Name: AttackDroid
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,8 +243,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07999999, y: 0.08, z: 0.07999999}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1993775378908618551}
   - {fileID: 4364518734091130804}
@@ -248,8 +270,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.8
-  m_Center: {x: 0, y: 0, z: -0.8}
+  m_Radius: 4
+  m_Center: {x: 0, y: -0.2, z: -0.75}
 --- !u!54 &6894910112498789154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -291,6 +313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   hitRadius: 0.2
+  randomness: 1.05
+  moveSpeed: 5
+  isPaused: 0
 --- !u!1 &5943317292626492190
 GameObject:
   m_ObjectHideFlags: 0
