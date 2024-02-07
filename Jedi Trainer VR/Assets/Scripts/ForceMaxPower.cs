@@ -35,24 +35,41 @@ public class ForceMaxPower : MonoBehaviour
 
     // Update is called once per frame
     private void OnMaxPowerPressed(InputAction.CallbackContext context)
+{
+    if (player.playerForce > 8)
     {
-        if (player.playerForce > 8) {
-            player.AlterForce(-8);
-            // pick two lightsabers at random from list of lightsaberPrefabs
-            // Instantiate both and set one position to rightHand.transform.position and the other to leftHand.transform.position
+        player.AlterForce(-8);
 
-            // Find all enemy tag in radius
-            // for each enemy
-                // Calc vector from player to it
-                // Apply force vector * knockBackForce
-                // Apply 5 damage // need to write script that goes on all enemies to handle health droids set to 1 health boss set to 10
+        // Picking two random lightsabers
+        var lightsaber1 = Instantiate(LightsaberPrefabs[Random.Range(0, LightsaberPrefabs.Length)], rightHand.position, Quaternion.identity);
+        var lightsaber2 = Instantiate(LightsaberPrefabs[Random.Range(0, LightsaberPrefabs.Length)], leftHand.position, Quaternion.identity);
 
+        // Finding all enemies within knockBackRadius
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, knockBackRadius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Enemy"))
+            {
+                Vector3 direction = (hitCollider.transform.position - transform.position).normalized;
+                if (hitCollider.TryGetComponent<Rigidbody>(out Rigidbody rb))
+                {
+                    rb.AddForce(direction * knockBackForce, ForceMode.Impulse);
+                }
+
+                // Applying damage, assuming an 'Enemy' script handles health
+                //if (hitCollider.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
+                //{
+                //    enemy.ApplyDamage(5);
+                //}
+            }
         }
-        Debug.Log("Max power pressed");
 
+        Debug.Log("Max power pressed");
     }
+}
     private void OnMaxPowerReleased(InputAction.CallbackContext context)
     {
+        // stop all effects here
         Debug.Log("Max power released");
     }
 }

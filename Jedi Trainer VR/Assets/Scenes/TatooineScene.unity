@@ -10380,6 +10380,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPowerTrigger: {fileID: 9173940949211940639, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
+  LightsaberPrefabs:
+  - {fileID: 4546501505013735246, guid: f31df1f13823d714285102f7e5376eaf, type: 3}
+  - {fileID: 2077858129929170306, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
+  - {fileID: 5003645856011459802, guid: 2ccd832508feb75458c628adcb80ead5, type: 3}
+  - {fileID: 6324995405980648180, guid: 64cc4bcca0f685c40b059571faa19e99, type: 3}
+  knockBackForce: 1
+  knockBackRadius: 8
 --- !u!1 &1200895122
 GameObject:
   m_ObjectHideFlags: 0
