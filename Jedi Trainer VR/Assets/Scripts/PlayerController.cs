@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public int playerForce = 10;
     public GameObject bodyCenterPoint;
 
-    private void OnCollisionEnter(Collision collision) // XR rig has no collider so this won't be triggered
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
