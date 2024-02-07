@@ -34,11 +34,11 @@ public class TrainingDroidController : MonoBehaviour
         orbitRadius = Random.Range(orbitRadiusRange.x, orbitRadiusRange.y);
     }
 
-    private void Update()
+    void FixedUpdate()
     {
-        if (player != null)
+        if (player != null && !isPaused)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            float distanceToPlayer = Vector3.Distance(rb.position, player.transform.position);
             if (distanceToPlayer > orbitRadius)
             {
                 MoveTowardsTarget();
@@ -46,35 +46,44 @@ public class TrainingDroidController : MonoBehaviour
             else
             {
                 RotateAroundTarget();
-                ShootPlayer();
             }
         }
     }
 
-    void OnTriggerEnter(Collider collider) {
-        if (collider.gameObject.tag == "Saber") {
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Saber")
+        {
             Destroy(gameObject);
         }
     }
+
     private void MoveTowardsTarget()
     {
-        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-        transform.position += directionToPlayer * speed * Time.deltaTime;
+        Vector3 directionToPlayer = (player.transform.position - rb.position).normalized;
+        rb.velocity = directionToPlayer * speed;
         FaceTowardsTarget();
     }
 
     private void RotateAroundTarget()
     {
-        Vector3 relativePosition = transform.position - player.transform.position;
-        relativePosition = Quaternion.Euler(0, currentRotateSpeed * Time.deltaTime, 0) * relativePosition;
-        transform.position = player.transform.position + relativePosition;
+        Vector3 offset = rb.position - player.transform.position;
+        Quaternion rotation = Quaternion.Euler(0, currentRotateSpeed * Time.fixedDeltaTime, 0);
+        Vector3 rotatedOffset = rotation * offset;
+        Vector3 targetPosition = player.transform.position + rotatedOffset;
+        Vector3 direction = (targetPosition - rb.position).normalized;
+        rb.velocity = direction * speed;
+
         FaceTowardsTarget();
     }
 
     private void FaceTowardsTarget()
     {
-        transform.LookAt(player.transform);
+        Vector3 direction = (player.transform.position - rb.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, rotateSpeed * Time.fixedDeltaTime);
     }
+
     private IEnumerator ChangeRotateDirection()
     {
         while (true)
@@ -89,7 +98,10 @@ public class TrainingDroidController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(2f, 5f));
-            shootLaser = true;
+            if (!isPaused)
+            {
+                ShootPlayer();
+            }
         }
     }
 
@@ -101,6 +113,7 @@ public class TrainingDroidController : MonoBehaviour
             shootLaser = false;
         }
     }
+
     private void OnDestroy()
     {
         playerController.AlterForce(2);

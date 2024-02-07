@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class ForceFuture : MonoBehaviour
 {
     public InputActionReference futureButton;
     public float futureTimeLength = 5f;
-    
+    public EnemyController enemySpawnController;
+    public Material futureMaterial;
+
     private PlayerController player;
     private bool isSimulating = false;
     private List<GameObject> originalEnemies = new List<GameObject>();
     private Dictionary<GameObject, List<Vector3>> recordedForces = new Dictionary<GameObject, List<Vector3>>();
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            StartCoroutine(SimulateFutureMovement());
+        }
+    }
 
     private void Awake()
     {
@@ -42,17 +53,21 @@ public class ForceFuture : MonoBehaviour
     IEnumerator SimulateFutureMovement()
     {
         isSimulating = true;
+        enemySpawnController.PauseSpawning();
         foreach (GameObject originalEnemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             GameObject clone = Instantiate(originalEnemy, originalEnemy.transform.position, originalEnemy.transform.rotation);
+            ReplaceAllMaterials(clone);
+            clone.layer = 6;
+            clone.tag = "Untagged";
             foreach (Collider col in  originalEnemy.GetComponentsInChildren<Collider>())
             {
                 col.enabled = false;
             }
-            foreach (Collider col in clone.GetComponentsInChildren<Collider>())
+            /*foreach (Collider col in clone.GetComponentsInChildren<Collider>())
             {
                 col.enabled = false;
-            }
+            }*/
             if(originalEnemy.name.Contains("Attack"))
             {
                 AttackDroidController cloneController = clone.GetComponent<AttackDroidController>();
@@ -84,6 +99,7 @@ public class ForceFuture : MonoBehaviour
         originalEnemies.Clear();
         recordedForces.Clear();
         isSimulating = false;
+        enemySpawnController.ResumeSpawning();
     }
 
     IEnumerator SimulateClonesMovement()
@@ -97,12 +113,44 @@ public class ForceFuture : MonoBehaviour
                 clone.GetComponent<Rigidbody>().AddForce(force * 5f, ForceMode.VelocityChange);
                 recordedForces[clone].Add(force);
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
+        }
+    }
+
+
+/*    void SimulateTrainingCloneMovement()
+    {
+        float startTime = Time.time;
+        while (Time.time - startTime < futureTimeLength)
+        {
+            foreach (GameObject clone in recordedForces.Keys)
+            {
+                Vector3 force = CalculateRandomDirection(clone);
+                clone.GetComponent<Rigidbody>().AddForce(force * 5f, ForceMode.VelocityChange);
+                recordedForces[clone].Add(force);
+            }
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
+        }
+
+        float currentRotateSpeed = 15f;
+        StartCoroutine(ChangeRotateDirection(currentRotateSpeed));
+        shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
+
+        orbitRadius = Random.Range(orbitRadiusRange.x, orbitRadiusRange.y);
+    }
+*/
+    private IEnumerator ChangeRotateDirection(float currentRotateSpeed)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(2f, 3f));
+            yield return -currentRotateSpeed; // Reverse rotation direction
         }
     }
 
     IEnumerator ApplyForcesSequentially(GameObject enemy, List<Vector3> forces)
     {
+        Debug.Log(enemy);
         Rigidbody rb = enemy.GetComponent<Rigidbody>();
         foreach (Vector3 force in forces)
         {
@@ -133,7 +181,24 @@ public class ForceFuture : MonoBehaviour
             directionToPlayer.z + Random.Range(-2.0f, 2.0f)
         );
 
-        Vector3 adjustedDirection = (randomDirection.normalized + directionToPlayer).normalized;
-        return adjustedDirection;
+        Vector3 slightRandomDirection = directionToPlayer + randomDirection * 0.1f;
+        return slightRandomDirection.normalized;
+    }
+
+    private void ReplaceAllMaterials(GameObject enemy)
+    {
+        Renderer[] renderers = enemy.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in renderers)
+        {
+            Material[] materials = new Material[renderer.sharedMaterials.Length];
+
+            for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = futureMaterial;
+            }
+
+            renderer.sharedMaterials = materials;
+        }
     }
 }
