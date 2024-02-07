@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public GameObject[] dronePrefabs = new GameObject[3];
     public TextMeshProUGUI roundText;
     public float spawnInterval = 1.0f;
+    public bool isPaused = false;
 
     private float timer = 0.0f;
     private int currentWave = 1;
@@ -25,11 +26,22 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-
+        if(isPaused)
+        {
+            return;
+        }
         if (timer >= spawnInterval && enemiesSpawned < enemiesToSpawn)
         {
             timer = 0.0f;
             GameObject drone = Instantiate(dronePrefabs[waveIndex], transform.position, transform.rotation);
+            if(currentWave == 1)
+            {
+                drone.name = "Attack Droid " + enemiesSpawned;
+            }
+            else if(currentWave == 2)
+            {
+                drone.name = "Training Droid " + enemiesSpawned;
+            }
             drone.tag = "Enemy";
             spawnedEnemies.Add(drone);
             enemiesSpawned++;
@@ -83,5 +95,15 @@ public class EnemyController : MonoBehaviour
         }
         roundText.text = "Round: " + currentWave.ToString();
         enemiesSpawned = 0;
+    }
+
+    public void PauseSpawning()
+    {
+        isPaused = true;
+    }
+
+    public void ResumeSpawning()
+    {
+        isPaused = false;
     }
 }
