@@ -15151,7 +15151,7 @@ MonoBehaviour:
   triggerInputRight: {fileID: -354631876153011449, guid: 4e32aaf685e26444091f2d92a3c16841, type: 3}
   lightningEffectLeft: {fileID: 7351528368426582073}
   lightningEffectRight: {fileID: 389517314248809159}
-  extensionThreshold: 0.75
+  extensionThreshold: 0.8
 --- !u!114 &1177691014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15214,7 +15214,7 @@ MonoBehaviour:
   - {fileID: 5003645856011459802, guid: 2ccd832508feb75458c628adcb80ead5, type: 3}
   - {fileID: 6324995405980648180, guid: 64cc4bcca0f685c40b059571faa19e99, type: 3}
   knockBackForce: 2
-  knockBackRadius: 25
+  knockBackRadius: 10
 --- !u!1 &1179055303
 GameObject:
   m_ObjectHideFlags: 0

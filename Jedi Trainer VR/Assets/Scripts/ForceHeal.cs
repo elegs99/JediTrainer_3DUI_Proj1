@@ -29,7 +29,7 @@ public class ForceHeal : MonoBehaviour
 
     private void OnDisable()
     {
-        healButton.action.performed -= OnHealButtonPressed;
+        healButton.action.started -= OnHealButtonPressed;
         healButton.action.canceled -= OnHealButtonReleased;
         healButton.action.Disable();
     }
@@ -53,7 +53,7 @@ public class ForceHeal : MonoBehaviour
 
     private IEnumerator HealButtonHoldCheck()
     {
-        //Debug.Log("Heal button hold check started");
+        // should check if health is below 100 before 
         isHealing = true;
         healthRestoreEffectLeft.Play();
         healthRestoreEffectRight.Play();

@@ -22,10 +22,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public float IsHandExtended(Transform handTransform) {
-        Vector2 bodyVec2 = new Vector2(bodyCenterPoint.transform.position.x, bodyCenterPoint.transform.position.z);
-        Vector2 handVec2 = new Vector2(handTransform.position.x, handTransform.position.z);
-        Vector2 flatDistance = handVec2 - bodyVec2;
-        return flatDistance.magnitude;
+        Vector3 distance = handTransform.position - bodyCenterPoint.transform.position;
+        return distance.magnitude;
     }
 
     public void AlterHealth(int health)

@@ -203,7 +203,7 @@ public class ForceGrab : MonoBehaviour
     }
     private IEnumerator ShootObjectAtEnemy(GameObject targetEnemy)
     {
-        Debug.Log("Shooting object");
+        //Debug.Log("Shooting object");
         float speed = 1;
         Vector3 targetDirection = targetEnemy.transform.position - rbTarget.transform.position;
         rbTarget.AddForce(targetDirection * speed, ForceMode.VelocityChange);
