@@ -51,6 +51,7 @@ public class ForceMaxPower : MonoBehaviour
             if (hitCollider.CompareTag("Enemy"))
             {
                 Vector3 direction = (hitCollider.transform.position - transform.position).normalized;
+                direction.y = 0;
                 if (hitCollider.TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
                     rb.AddForce(direction * knockBackForce, ForceMode.Impulse);

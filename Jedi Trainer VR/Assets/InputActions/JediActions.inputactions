@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "IncreaseForceMulti",
+                    "type": "Value",
+                    "id": "b4dbe08b-0620-4c24-8690-9954ef7a6dbc",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -197,6 +206,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MaxJediForcePress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a7919f2f-8f68-4930-b264-6e0430330d8e",
+                    "path": "*/{Secondary2DAxisForce}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseForceMulti",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
