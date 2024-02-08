@@ -13800,11 +13800,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 538939de81872b946bb2e3e704564d1e, type: 3}
---- !u!4 &881407364 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3468411330390605981, guid: 55934ea8960d9ea43941241cbcae3c97, type: 3}
-  m_PrefabInstance: {fileID: 1569147420}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &884744972
 GameObject:
   m_ObjectHideFlags: 0
@@ -15413,7 +15408,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -15435,7 +15430,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174931438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -15685,8 +15680,8 @@ MonoBehaviour:
   - {fileID: 2077858129929170306, guid: 6e8d6104701b65a4499f32dc8f271b67, type: 3}
   - {fileID: 5003645856011459802, guid: 2ccd832508feb75458c628adcb80ead5, type: 3}
   - {fileID: 6324995405980648180, guid: 64cc4bcca0f685c40b059571faa19e99, type: 3}
-  knockBackForce: 2
-  knockBackRadius: 10
+  knockBackForce: 15
+  knockBackRadius: 25
 --- !u!1 &1179055303
 GameObject:
   m_ObjectHideFlags: 0
@@ -27921,7 +27916,7 @@ ParticleSystem:
     radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 87
+      m_Bits: 279
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -29201,6 +29196,7 @@ GameObject:
   - component: {fileID: 3468411330381226583}
   - component: {fileID: 7351528368426582073}
   - component: {fileID: 9107654232047680886}
+  - component: {fileID: 9107654232047680887}
   m_Layer: 0
   m_Name: LightningPS Left
   m_TagString: Untagged
@@ -42947,11 +42943,11 @@ ParticleSystem:
     radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 87
+      m_Bits: 343
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 1
+    collisionMessages: 0
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -44255,6 +44251,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &9107654232047680887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344271840831806088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08770685ad09f464792a986a939b8edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
