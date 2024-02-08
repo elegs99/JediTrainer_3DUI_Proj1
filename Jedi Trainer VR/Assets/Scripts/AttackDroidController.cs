@@ -32,8 +32,18 @@ public class AttackDroidController : MonoBehaviour
     void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.tag == "Saber") {
             Destroy(gameObject);
+
         }
+        Debug.Log("Triggered by: " + collider.gameObject.name);
+
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name);
+    }
+
+
     IEnumerator ApplyRandomForcesTowardsPlayer()
     {
         while (true)
@@ -44,6 +54,8 @@ public class AttackDroidController : MonoBehaviour
             }
             else
             {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
                 Vector3 randomDirection = CalculateRandomDirection();
                 rb.AddForce(randomDirection * moveSpeed, ForceMode.VelocityChange);
                 FaceTowardsTarget();
@@ -57,7 +69,7 @@ public class AttackDroidController : MonoBehaviour
         Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
         Vector3 randomOffset = new(
             Random.Range(-randomness, randomness),
-            0,
+            Random.Range(-randomness, randomness),
             Random.Range(-randomness, randomness)
         );
         Vector3 slightRandomDirection = directionToPlayer + randomOffset * 0.1f;

@@ -16,8 +16,9 @@ public class TrainingDroidController : MonoBehaviour
     private float currentRotateSpeed;
     private Coroutine rotateDirectionCoroutine;
     private Coroutine shootLaserCoroutine;
-    private float orbitRadius;
+    public float orbitRadius;
     private bool shootLaser = false;
+    public bool switchToOrbit = false;
     private Rigidbody rb;
 
     void Start()
@@ -39,9 +40,16 @@ public class TrainingDroidController : MonoBehaviour
         if (player != null && !isPaused)
         {
             float distanceToPlayer = Vector3.Distance(rb.position, player.transform.position);
-            if (distanceToPlayer > orbitRadius)
+            if (Mathf.Floor(distanceToPlayer) > orbitRadius)
             {
                 MoveTowardsTarget();
+            }
+            else if(Mathf.Floor(distanceToPlayer) == orbitRadius && !switchToOrbit)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                switchToOrbit = true;
+                shootLaser = true;
             }
             else
             {
@@ -58,23 +66,61 @@ public class TrainingDroidController : MonoBehaviour
         }
     }
 
-    private void MoveTowardsTarget()
+    public Vector3 MoveTowardsTarget()
     {
+        if(player == null)
+        {
+            rb = GetComponent<Rigidbody>();
+
+            player = GameObject.FindWithTag("MainCamera");
+            playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
+
+            currentRotateSpeed = rotateSpeed;
+            rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirection());
+            shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
+        }
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
         Vector3 directionToPlayer = (player.transform.position - rb.position).normalized;
-        rb.velocity = directionToPlayer * speed;
+        float distanceToPlayer = Vector3.Distance(rb.position, player.transform.position);
+        float speedAdjustmentFactor = Mathf.Clamp01((distanceToPlayer - orbitRadius) / speed);
+        float adjustedSpeed = speed * speedAdjustmentFactor;
+        if (distanceToPlayer - adjustedSpeed * Time.fixedDeltaTime < orbitRadius)
+        {
+            adjustedSpeed = (distanceToPlayer - orbitRadius) / Time.fixedDeltaTime;
+        }
+
+        rb.velocity = directionToPlayer * adjustedSpeed;
         FaceTowardsTarget();
+        return directionToPlayer * speed;
     }
 
-    private void RotateAroundTarget()
+    public Vector3 RotateAroundTarget()
     {
+        if (player == null)
+        {
+            rb = GetComponent<Rigidbody>();
+
+            player = GameObject.FindWithTag("MainCamera");
+            playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
+
+            currentRotateSpeed = rotateSpeed;
+            rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirection());
+            shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
+        }
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
         Vector3 offset = rb.position - player.transform.position;
         Quaternion rotation = Quaternion.Euler(0, currentRotateSpeed * Time.fixedDeltaTime, 0);
         Vector3 rotatedOffset = rotation * offset;
         Vector3 targetPosition = player.transform.position + rotatedOffset;
         Vector3 direction = (targetPosition - rb.position).normalized;
-        rb.velocity = direction * speed;
+        rb.velocity = direction * rotateSpeed;
 
         FaceTowardsTarget();
+        return direction * rotateSpeed;
     }
 
     private void FaceTowardsTarget()
@@ -107,9 +153,11 @@ public class TrainingDroidController : MonoBehaviour
 
     private void ShootPlayer()
     {
+        Debug.Log("Shooting");
         if (shootLaser && laserbeam != null && laserLaunchPoint != null)
         {
-            Instantiate(laserbeam, laserLaunchPoint.position, laserLaunchPoint.rotation);
+            GameObject laser = Instantiate(laserbeam, laserLaunchPoint.position, laserLaunchPoint.rotation);
+            Debug.Log(laser);
             shootLaser = false;
         }
     }

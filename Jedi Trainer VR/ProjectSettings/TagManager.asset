@@ -14,9 +14,9 @@ TagManager:
   - Player
   - Water
   - UI
+  - Enemy(Future)
+  - Table
   - Enemy
-  - 
-  - 
   - 
   - 
   - 
