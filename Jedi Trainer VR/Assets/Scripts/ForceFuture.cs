@@ -79,6 +79,13 @@ public class ForceFuture : MonoBehaviour
                 originalEnemy.GetComponent<AttackDroidController>().PauseMovement();
                 cloneController.isPaused = true;
             }
+            else if(originalEnemy.name.Contains("Boss"))
+            {
+                BossDroidController cloneController = clone.GetComponent<BossDroidController>();
+
+                originalEnemy.GetComponent<BossDroidController>().PauseMovement();
+                cloneController.isPaused = true;
+            }
             else if(originalEnemy.name.Contains("Training"))
             {
                 TrainingDroidController cloneController = clone.GetComponent<TrainingDroidController>();
@@ -115,7 +122,7 @@ public class ForceFuture : MonoBehaviour
 
             foreach (GameObject clone in recordedForces.Keys)
             {
-                if (clone.name.Contains("Attack"))
+                if (clone.name.Contains("Attack") || clone.name.Contains("Boss"))
                 {
                     enemyType = "Attack";
                     Rigidbody rb = clone.GetComponent<Rigidbody>();
@@ -162,7 +169,7 @@ public class ForceFuture : MonoBehaviour
     IEnumerator ApplyForcesSequentially(GameObject enemy, List<Vector3> forces)
     {
         Rigidbody rb = enemy.GetComponent<Rigidbody>();
-        if (enemy.name.Contains("Attack"))
+        if (enemy.name.Contains("Attack") || enemy.name.Contains("Boss"))
         {
             foreach (Vector3 force in forces)
             {
