@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4021934773095066601}
   - component: {fileID: 1514846005526933851}
   - component: {fileID: 3601071268313888456}
-  - component: {fileID: 1408108263851008275}
+  - component: {fileID: 5775018700253035855}
   m_Layer: 8
   m_Name: BotBody
   m_TagString: Untagged
@@ -172,7 +172,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1408108263851008275
+--- !u!135 &5775018700253035855
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,3 +327,4 @@ MonoBehaviour:
   orbitRadiusRange: {x: 3, y: 9}
   isPaused: 0
   orbitRadius: 0
+  switchToOrbit: 0

@@ -17,7 +17,9 @@ public class ParticleForce : MonoBehaviour
 
     // Update is called once per frame
     void OnParticleCollision(GameObject other) {
+        Debug.Log("Enemy hit by: " + other.gameObject.name);
         if (other.gameObject.tag == "Enemy") {
+            Debug.Log("Enemy hit by particle");
             GameObject.Destroy(other);
         }
     }
