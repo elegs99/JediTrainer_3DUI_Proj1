@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 public class ForceHeal : MonoBehaviour
 {
     public InputActionReference healButton;
+    public ParticleSystem healthRestoreEffectLeft;
+    public ParticleSystem healthRestoreEffectRight;
     
     [Tooltip("Required amount of time the heal button needs to be pressed")]
     public float requiredHoldDuration = 5.0f;
@@ -16,7 +18,7 @@ public class ForceHeal : MonoBehaviour
     private void Awake()
     {
         player = gameObject.GetComponent<PlayerController>();
-        healButton.action.started += OnHealButtonPressed;
+        healButton.action.performed += OnHealButtonPressed;
         healButton.action.canceled += OnHealButtonReleased;
     }
 
@@ -42,6 +44,8 @@ public class ForceHeal : MonoBehaviour
     {
         if (isHealing)
         {
+            healthRestoreEffectLeft.Stop();
+            healthRestoreEffectRight.Stop();
             StopCoroutine(healingCoroutine);
             isHealing = false;
         }
@@ -49,8 +53,10 @@ public class ForceHeal : MonoBehaviour
 
     private IEnumerator HealButtonHoldCheck()
     {
-        //Debug.Log("Heal button hold check started");
+        // should check if health is below 100 before 
         isHealing = true;
+        healthRestoreEffectLeft.Play();
+        healthRestoreEffectRight.Play();
         yield return new WaitForSeconds(requiredHoldDuration);
         if (player.playerForce > 1)
         {
@@ -62,5 +68,7 @@ public class ForceHeal : MonoBehaviour
     {
         player.AlterForce(-1);
         player.AlterHealth(30);
+        healthRestoreEffectLeft.Stop();
+        healthRestoreEffectRight.Stop();
     }
 }

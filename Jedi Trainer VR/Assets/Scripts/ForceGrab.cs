@@ -9,6 +9,7 @@ public class ForceGrab : MonoBehaviour
     public InputActionReference gripButtonLeft;
     public InputActionReference gripButtonRight;
     public InputActionReference anyTriggerButton;
+    public InputActionReference IncreaseForceAxisValue;
     public Transform palmCenterRight;
     public Transform palmCenterLeft;
     public GameObject mainCamera;
@@ -33,8 +34,9 @@ public class ForceGrab : MonoBehaviour
         gripButtonLeft.action.canceled += context => OnGripButtonReleased(_isRightHand: false);
         gripButtonRight.action.started += context => OnGripButtonPressed(context, _isRightHand: true);
         gripButtonRight.action.canceled += context => OnGripButtonReleased(_isRightHand: true);
-        anyTriggerButton.action.started += context => OnTriggerPressed();
-        anyTriggerButton.action.canceled += context => OnTriggerReleased();
+        anyTriggerButton.action.started += OnTriggerPressed;
+        anyTriggerButton.action.canceled += OnTriggerReleased;
+        IncreaseForceAxisValue.action.started += CheckAxisDirection;
         referencePoint = new GameObject("ReferencePoint").transform;
     }
 
@@ -80,9 +82,8 @@ public class ForceGrab : MonoBehaviour
             if (isTriggerPressed) {
                 GameObject targetEnemy = GameObject.FindWithTag("Enemy");
                 if (targetEnemy != null) {
-                    ShootObjectAtEnemy(targetEnemy);
+                    StartCoroutine(ShootObjectAtEnemy(targetEnemy));
                 }
-                //StartCoroutine(ShootObjectAtEnemy());
             } else {
                 currentPalm = isRightHand ? palmCenterRight : palmCenterLeft;
                 Vector3 forceDirection = currentPalm.position - referencePoint.position; // Force based on hand movement
@@ -186,22 +187,27 @@ public class ForceGrab : MonoBehaviour
         isGripping = false;
     }
 
-    private void OnTriggerPressed()
+    private void OnTriggerPressed(InputAction.CallbackContext context)
     {
         isTriggerPressed = true;
     }
-    private void OnTriggerReleased()
+    private void OnTriggerReleased(InputAction.CallbackContext context)
+    {
+        isTriggerPressed = false;
+        referencePoint.position = currentPalm.position;
+    }
+    private void CheckAxisDirection(InputAction.CallbackContext context)
     {
         isTriggerPressed = false;
         referencePoint.position = currentPalm.position;
     }
     private IEnumerator ShootObjectAtEnemy(GameObject targetEnemy)
     {
-        Debug.Log("Shooting object");
-        float speed = 10;
+        //Debug.Log("Shooting object");
+        float speed = 1;
         Vector3 targetDirection = targetEnemy.transform.position - rbTarget.transform.position;
         rbTarget.AddForce(targetDirection * speed, ForceMode.VelocityChange);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.2f);
         Destroy(targetEnemy);
         Destroy(selectedObject);
         ReleaseSelectedObject();

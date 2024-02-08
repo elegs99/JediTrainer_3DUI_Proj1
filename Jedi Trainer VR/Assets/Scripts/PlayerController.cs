@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public int playerForce = 10;
     public GameObject bodyCenterPoint;
 
-    private void OnCollisionEnter(Collision collision) // XR rig has no collider so this won't be triggered
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
@@ -22,10 +22,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public float IsHandExtended(Transform handTransform) {
-        Vector2 bodyVec2 = new Vector2(bodyCenterPoint.transform.position.x, bodyCenterPoint.transform.position.z);
-        Vector2 handVec2 = new Vector2(handTransform.position.x, handTransform.position.z);
-        Vector2 flatDistance = handVec2 - bodyVec2;
-        return flatDistance.magnitude;
+        Vector3 distance = handTransform.position - bodyCenterPoint.transform.position;
+        return distance.magnitude;
     }
 
     public void AlterHealth(int health)

@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1993775378908618551}
   - component: {fileID: 6756443845156603049}
   - component: {fileID: 433566094743588032}
-  - component: {fileID: 5495103568823560019}
+  - component: {fileID: 4076913278806547622}
   m_Layer: 8
   m_Name: Attack Droid
   m_TagString: Untagged
@@ -193,7 +193,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5495103568823560019
+--- !u!135 &4076913278806547622
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MaxJediForcePress",
+                    "type": "Button",
+                    "id": "dec30581-f7dc-4fa7-8822-71ae36602590",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "IncreaseForceMulti",
+                    "type": "Value",
+                    "id": "b4dbe08b-0620-4c24-8690-9954ef7a6dbc",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -166,6 +184,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "TriggerPressAny",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "deb66f8f-5d2b-4dfa-9704-43e1fe17ef1d",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MaxJediForcePress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "075672e6-7964-4af6-98ec-7ed799137fac",
+                    "path": "<XRController>{RightHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MaxJediForcePress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a7919f2f-8f68-4930-b264-6e0430330d8e",
+                    "path": "*/{Secondary2DAxisForce}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseForceMulti",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
