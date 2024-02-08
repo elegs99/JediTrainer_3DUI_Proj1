@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 1734715172707956697}
   - component: {fileID: 8709139683349532617}
   - component: {fileID: 428494843292988365}
+  - component: {fileID: -6086912792281350272}
   m_Layer: 8
   m_Name: BossDroid
   m_TagString: Enemy
@@ -382,3 +383,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &-6086912792281350272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7512599944059039452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60822bff1c01ea4b9d040fbb2cd15e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10

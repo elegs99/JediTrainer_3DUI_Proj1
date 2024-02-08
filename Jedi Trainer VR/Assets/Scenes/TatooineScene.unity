@@ -15182,6 +15182,7 @@ GameObject:
   - component: {fileID: 1174931442}
   - component: {fileID: 1174931441}
   - component: {fileID: 1174931440}
+  - component: {fileID: 1174931443}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -21311,7 +21312,7 @@ MonoBehaviour:
   dronePrefabs:
   - {fileID: 8976233797925999245, guid: 38da0997d8e38d048a9c5b2e80d64835, type: 3}
   - {fileID: 5341661523106822021, guid: aef36637aac54644da99c23e43799085, type: 3}
-  - {fileID: 5341661523106822021, guid: aef36637aac54644da99c23e43799085, type: 3}
+  - {fileID: 7512599944059039452, guid: c56d9a3fb60b0394c8e3b22f4e3ae4aa, type: 3}
   roundText: {fileID: 2028431914}
   spawnInterval: 3
   isPaused: 0
@@ -42966,7 +42967,7 @@ ParticleSystem:
     radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 343
+      m_Bits: 279
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

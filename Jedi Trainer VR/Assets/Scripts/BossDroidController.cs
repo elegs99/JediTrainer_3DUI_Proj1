@@ -11,16 +11,13 @@ public class BossDroidController : MonoBehaviour
     public bool isPaused = false;
     public GameObject trainingPrefab;
     public GameObject attackPrefab;
-    public GameObject enemySpawner;
 
     private bool hitPlayer = false;
     private GameObject player;
     private PlayerController playerController;
-
     private Rigidbody rb;
-
     private int enemiesSpawned = 0;
-
+    private EnemyHealth enemyHealth;
     void Start()
     {
         player = GameObject.Find("Player Target");
@@ -29,6 +26,7 @@ public class BossDroidController : MonoBehaviour
         Random.InitState((int)System.DateTime.Now.Ticks);
         StartCoroutine(ApplyRandomForcesTowardsPlayer());
         StartCoroutine(BossSpawner());
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     void Update()
@@ -72,16 +70,11 @@ public class BossDroidController : MonoBehaviour
         }
     }
 
-    // this part of the code isn't working right now will fix tmrw
-    // it's because the grab interactable diasables the collider on the saber when you are holding it
-    // Should put seperate collider on the blade and handle and update blade tag to saber
-    // Also remove collider scaling from the lightsaber controller script
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Saber")
         {
-            Destroy(gameObject);
-
+            enemyHealth.AlterEnemyHealth(-1);
         }
     }
 
@@ -100,13 +93,13 @@ public class BossDroidController : MonoBehaviour
 
     void SpawnTrainingDroid()
     {
-        GameObject trainingDroid = Instantiate(trainingPrefab, enemySpawner.transform.position, enemySpawner.transform.rotation);
+        GameObject trainingDroid = Instantiate(trainingPrefab, transform.position, transform.rotation);
         trainingDroid.name = "Training Droid " + enemiesSpawned;
     }
 
     void SpawnAttackDroid()
     {
-        GameObject attackDroid = Instantiate(attackPrefab, enemySpawner.transform.position, enemySpawner.transform.rotation);
+        GameObject attackDroid = Instantiate(attackPrefab, transform.position, transform.rotation);
         attackDroid.name = "Attack Droid " + enemiesSpawned;
     }
 

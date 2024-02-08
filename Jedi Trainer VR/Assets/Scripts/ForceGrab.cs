@@ -25,6 +25,7 @@ public class ForceGrab : MonoBehaviour
     private ForceLightning lightningController;
     private bool isRightHand = true;
     private bool isTriggerPressed = false;
+    private EnemyHealth enemyHealth;
 
     private void Awake()
     {
@@ -203,12 +204,12 @@ public class ForceGrab : MonoBehaviour
     }
     private IEnumerator ShootObjectAtEnemy(GameObject targetEnemy)
     {
-        //Debug.Log("Shooting object");
+        enemyHealth = targetEnemy.GetComponent<EnemyHealth>();
         float speed = 1;
         Vector3 targetDirection = targetEnemy.transform.position - rbTarget.transform.position;
         rbTarget.AddForce(targetDirection * speed, ForceMode.VelocityChange);
         yield return new WaitForSeconds(.2f);
-        Destroy(targetEnemy);
+        enemyHealth.AlterEnemyHealth(-1);
         Destroy(selectedObject);
         ReleaseSelectedObject();
     }

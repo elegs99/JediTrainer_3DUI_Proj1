@@ -8,6 +8,7 @@ public class ParticleForce : MonoBehaviour
 {
     private ParticleSystem particleLauncher;
     List<ParticleCollisionEvent> collisionEvents;
+    private EnemyHealth enemyHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,10 @@ public class ParticleForce : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnParticleCollision(GameObject other) {
-        Debug.Log("Enemy hit by: " + other.gameObject.name);
-        if (other.gameObject.tag == "Enemy") {
-            Debug.Log("Enemy hit by particle");
-            GameObject.Destroy(other);
+    void OnParticleCollision(GameObject target) {
+        if (target.gameObject.tag == "Enemy") {
+            enemyHealth = target.GetComponent<EnemyHealth>();
+            enemyHealth.AlterEnemyHealth(-1);
         }
     }
 }

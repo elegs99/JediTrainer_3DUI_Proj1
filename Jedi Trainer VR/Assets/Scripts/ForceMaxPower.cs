@@ -56,12 +56,10 @@ public class ForceMaxPower : MonoBehaviour
                 {
                     rb.AddForce(direction * knockBackForce, ForceMode.Impulse);
                 }
-
-                // Applying damage, assuming an 'Enemy' script handles health
-                //if (hitCollider.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
-                //{
-                //    enemy.ApplyDamage(5);
-                //}
+                if (hitCollider.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
+                {
+                    enemy.AlterEnemyHealth(-5);
+                }
             }
         }
 

@@ -20,10 +20,12 @@ public class TrainingDroidController : MonoBehaviour
     private bool shootLaser = false;
     public bool switchToOrbit = false;
     private Rigidbody rb;
+    private EnemyHealth enemyHealth;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        enemyHealth = GetComponent<EnemyHealth>();
 
         player = GameObject.FindWithTag("MainCamera");
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
@@ -62,7 +64,7 @@ public class TrainingDroidController : MonoBehaviour
     {
         if (collider.gameObject.tag == "Saber")
         {
-            Destroy(gameObject);
+            enemyHealth.AlterEnemyHealth(-1);
         }
     }
 
@@ -74,10 +76,6 @@ public class TrainingDroidController : MonoBehaviour
 
             player = GameObject.FindWithTag("MainCamera");
             playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
-
-            currentRotateSpeed = rotateSpeed;
-            rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirection());
-            shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
         }
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;

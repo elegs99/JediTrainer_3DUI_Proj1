@@ -9,6 +9,7 @@ public class LaserbeamController : MonoBehaviour
     private GameObject target;
     private PlayerController playerController;
     private bool switchedTarget = false;
+    private EnemyHealth enemyHealth;
     void Start()
     {
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
@@ -25,7 +26,8 @@ public class LaserbeamController : MonoBehaviour
                     playerController.AlterHealth(-5);
                     Destroy(gameObject);
                 } else if (playerController != null) {
-                    Destroy(target);
+                    enemyHealth = target.GetComponent<EnemyHealth>();
+                    enemyHealth.AlterEnemyHealth(-1);
                     Destroy(gameObject);
                 }
             }
@@ -45,7 +47,7 @@ public class LaserbeamController : MonoBehaviour
             {
                 switchedTarget = true;
                 transform.LookAt(target.transform);
-                speed = 10;
+                speed = 15;
             } else {
                 Destroy(gameObject);
             }

@@ -17,32 +17,27 @@ public class AttackDroidController : MonoBehaviour
     private Rigidbody rb;
     private float currentRotateSpeed;
     private Coroutine rotateDirectionCoroutine;
+    private EnemyHealth enemyHealth;
     void Start()
     {
         player = GameObject.Find("Player Target");
+        enemyHealth = GetComponent<EnemyHealth>();
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(ApplyRandomForcesTowardsPlayer());
     }
 
-    // this part of the code isn't working right now will fix tmrw
-    // it's because the grab interactable diasables the collider on the saber when you are holding it
-    // Should put seperate collider on the blade and handle and update blade tag to saber
-    // Also remove collider scaling from the lightsaber controller script
     void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.tag == "Saber") {
-            Destroy(gameObject);
-
+            enemyHealth.AlterEnemyHealth(-1);
         }
-        Debug.Log("Triggered by: " + collider.gameObject.name);
-
+        //Debug.Log("Triggered by: " + collider.gameObject.name);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
+        //Debug.Log("Collided with: " + collision.gameObject.name);
     }
-
 
     IEnumerator ApplyRandomForcesTowardsPlayer()
     {

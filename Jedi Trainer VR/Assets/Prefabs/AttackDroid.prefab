@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 5170193373238917976}
   - component: {fileID: 6894910112498789154}
   - component: {fileID: 3134709884501206299}
+  - component: {fileID: -6138860109955318038}
   m_Layer: 8
   m_Name: AttackDroid
   m_TagString: Enemy
@@ -316,6 +317,19 @@ MonoBehaviour:
   randomness: 1.05
   moveSpeed: 5
   isPaused: 0
+--- !u!114 &-6138860109955318038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341661523106822021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60822bff1c01ea4b9d040fbb2cd15e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &5943317292626492190
 GameObject:
   m_ObjectHideFlags: 0
