@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8858611032114536195}
   - component: {fileID: 8067673087373233635}
   - component: {fileID: 4758069840011293450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1514846005526933851}
   - component: {fileID: 3601071268313888456}
   - component: {fileID: 1408108263851008275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BotBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5063045185877964917}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 1793504558087293837}
   - component: {fileID: 8115640030387405689}
   - component: {fileID: 6339417004149712671}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrainingDroid
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &6339417004149712671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,9 +320,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146603ed2b4ad884c853518a74086da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  rotateSpeed: 15
+  speed: 6
+  rotateSpeed: 1
   laserbeam: {fileID: 6914592063930039172, guid: 23bedb22dbe279443b313ecbf28c3bef, type: 3}
   laserLaunchPoint: {fileID: 5063045185877964917}
   orbitRadiusRange: {x: 3, y: 9}
   isPaused: 0
+  orbitRadius: 0

@@ -11,12 +11,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - Future
-  - 
-  - 
+  - Enemy(Future)
+  - Table
+  - Enemy
   - 
   - 
   - 

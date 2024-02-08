@@ -16,8 +16,9 @@ public class TrainingDroidController : MonoBehaviour
     private float currentRotateSpeed;
     private Coroutine rotateDirectionCoroutine;
     private Coroutine shootLaserCoroutine;
-    private float orbitRadius;
+    public float orbitRadius;
     private bool shootLaser = false;
+    public bool switchToOrbit = false;
     private Rigidbody rb;
 
     void Start()
@@ -34,47 +35,101 @@ public class TrainingDroidController : MonoBehaviour
         orbitRadius = Random.Range(orbitRadiusRange.x, orbitRadiusRange.y);
     }
 
-    private void Update()
+    void FixedUpdate()
     {
-        if (player != null)
+        if (player != null && !isPaused)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer > orbitRadius)
+            float distanceToPlayer = Vector3.Distance(rb.position, player.transform.position);
+            if (Mathf.Floor(distanceToPlayer) > orbitRadius)
             {
                 MoveTowardsTarget();
+            }
+            else if(Mathf.Floor(distanceToPlayer) == orbitRadius && !switchToOrbit)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                switchToOrbit = true;
+                shootLaser = true;
             }
             else
             {
                 RotateAroundTarget();
-                ShootPlayer();
             }
         }
     }
 
-    void OnTriggerEnter(Collider collider) {
-        if (collider.gameObject.tag == "Saber") {
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Saber")
+        {
             Destroy(gameObject);
         }
     }
-    private void MoveTowardsTarget()
+
+    public Vector3 MoveTowardsTarget()
     {
-        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-        transform.position += directionToPlayer * speed * Time.deltaTime;
+        if(player == null)
+        {
+            rb = GetComponent<Rigidbody>();
+
+            player = GameObject.FindWithTag("MainCamera");
+            playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
+
+            currentRotateSpeed = rotateSpeed;
+            rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirection());
+            shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
+        }
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        Vector3 directionToPlayer = (player.transform.position - rb.position).normalized;
+        float distanceToPlayer = Vector3.Distance(rb.position, player.transform.position);
+        float speedAdjustmentFactor = Mathf.Clamp01((distanceToPlayer - orbitRadius) / speed);
+        float adjustedSpeed = speed * speedAdjustmentFactor;
+        if (distanceToPlayer - adjustedSpeed * Time.fixedDeltaTime < orbitRadius)
+        {
+            adjustedSpeed = (distanceToPlayer - orbitRadius) / Time.fixedDeltaTime;
+        }
+
+        rb.velocity = directionToPlayer * adjustedSpeed;
         FaceTowardsTarget();
+        return directionToPlayer * speed;
     }
 
-    private void RotateAroundTarget()
+    public Vector3 RotateAroundTarget()
     {
-        Vector3 relativePosition = transform.position - player.transform.position;
-        relativePosition = Quaternion.Euler(0, currentRotateSpeed * Time.deltaTime, 0) * relativePosition;
-        transform.position = player.transform.position + relativePosition;
+        if (player == null)
+        {
+            rb = GetComponent<Rigidbody>();
+
+            player = GameObject.FindWithTag("MainCamera");
+            playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
+
+            currentRotateSpeed = rotateSpeed;
+            rotateDirectionCoroutine = StartCoroutine(ChangeRotateDirection());
+            shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
+        }
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        Vector3 offset = rb.position - player.transform.position;
+        Quaternion rotation = Quaternion.Euler(0, currentRotateSpeed * Time.fixedDeltaTime, 0);
+        Vector3 rotatedOffset = rotation * offset;
+        Vector3 targetPosition = player.transform.position + rotatedOffset;
+        Vector3 direction = (targetPosition - rb.position).normalized;
+        rb.velocity = direction * rotateSpeed;
+
         FaceTowardsTarget();
+        return direction * rotateSpeed;
     }
 
     private void FaceTowardsTarget()
     {
-        transform.LookAt(player.transform);
+        Vector3 direction = (player.transform.position - rb.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, rotateSpeed * Time.fixedDeltaTime);
     }
+
     private IEnumerator ChangeRotateDirection()
     {
         while (true)
@@ -89,18 +144,24 @@ public class TrainingDroidController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(2f, 5f));
-            shootLaser = true;
+            if (!isPaused)
+            {
+                ShootPlayer();
+            }
         }
     }
 
     private void ShootPlayer()
     {
+        Debug.Log("Shooting");
         if (shootLaser && laserbeam != null && laserLaunchPoint != null)
         {
-            Instantiate(laserbeam, laserLaunchPoint.position, laserLaunchPoint.rotation);
+            GameObject laser = Instantiate(laserbeam, laserLaunchPoint.position, laserLaunchPoint.rotation);
+            Debug.Log(laser);
             shootLaser = false;
         }
     }
+
     private void OnDestroy()
     {
         playerController.AlterForce(2);
