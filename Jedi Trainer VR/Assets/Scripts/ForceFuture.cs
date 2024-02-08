@@ -18,6 +18,10 @@ public class ForceFuture : MonoBehaviour
 
     private void Update()
     {
+        if(isSimulating)
+        {
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.F))
         {
             StartCoroutine(SimulateFutureMovement());
@@ -105,57 +109,78 @@ public class ForceFuture : MonoBehaviour
     IEnumerator SimulateClonesMovement()
     {
         float startTime = Time.time;
+        string enemyType = "";
         while (Time.time - startTime < futureTimeLength)
         {
+
             foreach (GameObject clone in recordedForces.Keys)
             {
-                Vector3 force = CalculateRandomDirection(clone);
-                clone.GetComponent<Rigidbody>().AddForce(force * 5f, ForceMode.VelocityChange);
-                recordedForces[clone].Add(force);
+                if (clone.name.Contains("Attack"))
+                {
+                    enemyType = "Attack";
+                    Rigidbody rb = clone.GetComponent<Rigidbody>();
+                    rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                    Vector3 force = CalculateRandomDirection(clone);
+                    rb.AddForce(force * 5f, ForceMode.VelocityChange);
+                    recordedForces[clone].Add(force);
+                }
+                else if (clone.name.Contains("Training"))
+                {
+                    enemyType = "Training";
+                    TrainingDroidController cloneController = clone.GetComponent<TrainingDroidController>();
+                    GameObject originalTrainingDroid = originalEnemies.Find(c => c.name == clone.name.Replace("(Clone)", ""));
+                    TrainingDroidController originalController = originalTrainingDroid.GetComponent<TrainingDroidController>();
+                    cloneController.orbitRadius = originalController.orbitRadius;
+                    Rigidbody rb = clone.GetComponent<Rigidbody>();
+                    float distanceToPlayer = Vector3.Distance(rb.position, player.transform.position);
+                    Vector3 force;
+                    rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                    if (Mathf.Floor(distanceToPlayer) > originalController.orbitRadius && !originalController.switchToOrbit)
+                    {
+                        force = cloneController.MoveTowardsTarget();
+                    }
+                    else
+                    {
+                        force = cloneController.RotateAroundTarget();
+                    }
+                    recordedForces[clone].Add(force);
+                }
             }
-            yield return new WaitForSeconds(Random.Range(1f, 3f));
-        }
-    }
-
-
-/*    void SimulateTrainingCloneMovement()
-    {
-        float startTime = Time.time;
-        while (Time.time - startTime < futureTimeLength)
-        {
-            foreach (GameObject clone in recordedForces.Keys)
+            if(enemyType.Contains("Attack"))
+            {                 
+                yield return new WaitForSeconds(2f);
+            }
+            else if(enemyType.Contains("Training"))
             {
-                Vector3 force = CalculateRandomDirection(clone);
-                clone.GetComponent<Rigidbody>().AddForce(force * 5f, ForceMode.VelocityChange);
-                recordedForces[clone].Add(force);
+                yield return new WaitForSeconds(0.5f);
             }
-            yield return new WaitForSeconds(Random.Range(1f, 3f));
-        }
-
-        float currentRotateSpeed = 15f;
-        StartCoroutine(ChangeRotateDirection(currentRotateSpeed));
-        shootLaserCoroutine = StartCoroutine(Wait2ShootLaser());
-
-        orbitRadius = Random.Range(orbitRadiusRange.x, orbitRadiusRange.y);
-    }
-*/
-    private IEnumerator ChangeRotateDirection(float currentRotateSpeed)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(2f, 3f));
-            yield return -currentRotateSpeed; // Reverse rotation direction
         }
     }
 
     IEnumerator ApplyForcesSequentially(GameObject enemy, List<Vector3> forces)
     {
-        Debug.Log(enemy);
         Rigidbody rb = enemy.GetComponent<Rigidbody>();
-        foreach (Vector3 force in forces)
+        if (enemy.name.Contains("Attack"))
         {
-            rb.AddForce(force * 5.0f, ForceMode.VelocityChange);
-            yield return new WaitForSeconds(2f);
+            foreach (Vector3 force in forces)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.AddForce(force * 5.0f, ForceMode.VelocityChange);
+                yield return new WaitForSeconds(2f);
+            }
+        }
+        else if (enemy.name.Contains("Training"))
+        {
+            foreach (Vector3 force in forces)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.AddForce(force /  1.35f, ForceMode.VelocityChange);
+                yield return new WaitForSeconds(0.5f);
+            }
         }
         foreach (Collider col in enemy.GetComponentsInChildren<Collider>())
         {
@@ -175,13 +200,12 @@ public class ForceFuture : MonoBehaviour
     Vector3 CalculateRandomDirection(GameObject enemy)
     {
         Vector3 directionToPlayer = (player.transform.position - enemy.transform.position).normalized;
-        Vector3 randomDirection = new(
-            directionToPlayer.x + Random.Range(-2.0f, 2.0f),
-            0,
-            directionToPlayer.z + Random.Range(-2.0f, 2.0f)
+        Vector3 randomOffset = new(
+            Random.Range(-2.0f, 2.0f),
+            Random.Range(0, 3.0f),
+            Random.Range(-2.0f, 2.0f)
         );
-
-        Vector3 slightRandomDirection = directionToPlayer + randomDirection * 0.1f;
+        Vector3 slightRandomDirection = directionToPlayer + randomOffset * 0.1f;
         return slightRandomDirection.normalized;
     }
 
