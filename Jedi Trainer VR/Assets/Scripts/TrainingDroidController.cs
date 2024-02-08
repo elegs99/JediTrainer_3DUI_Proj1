@@ -123,9 +123,9 @@ public class TrainingDroidController : MonoBehaviour
 
     private void FaceTowardsTarget()
     {
-        Vector3 direction = (player.transform.position - rb.position).normalized;
+        Vector3 direction = player.transform.position - rb.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, rotateSpeed * Time.fixedDeltaTime);
+        rb.rotation = Quaternion.Slerp(rb.rotation, lookRotation, 10 * Time.fixedDeltaTime);
     }
 
     private IEnumerator ChangeRotateDirection()
@@ -151,12 +151,9 @@ public class TrainingDroidController : MonoBehaviour
 
     private void ShootPlayer()
     {
-        Debug.Log("Shooting");
         if (shootLaser && laserbeam != null && laserLaunchPoint != null)
         {
             GameObject laser = Instantiate(laserbeam, laserLaunchPoint.position, laserLaunchPoint.rotation);
-            Debug.Log(laser);
-            shootLaser = false;
         }
     }
 

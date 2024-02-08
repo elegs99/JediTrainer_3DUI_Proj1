@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  droidExplosion: {fileID: 464282106839742443, guid: 1f18b7cfa6712114689819331a507726, type: 3}
 --- !u!1 &5943317292626492190
 GameObject:
   m_ObjectHideFlags: 0

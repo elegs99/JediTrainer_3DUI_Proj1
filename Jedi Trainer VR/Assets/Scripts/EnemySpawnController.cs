@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     private int waveIndex = 0;
     private int enemiesToSpawn;
     private int enemiesSpawned = 0;
+    private int spawnDifficultyIncrease = 0;
     private Vector2 spawnAreaSize;
     private List<GameObject> spawnedEnemies = new List<GameObject>(); // List to keep track of spawned enemies
 
@@ -105,22 +106,23 @@ public class EnemyController : MonoBehaviour
 
     void StartWave(int waveNumber)
     {
-        switch(waveNumber)
+        switch(((waveNumber-1)%3)+1)
         { 
             case 1:
-                spawnAreaSize = new Vector2(2f, 2f);
-                enemiesToSpawn = 5;
+                spawnAreaSize = new Vector2(5f, 5f);
+                enemiesToSpawn = 5 + spawnDifficultyIncrease;
                 waveIndex = 0;
                 break;
             case 2:
-                spawnAreaSize = new Vector2(10f, 10f);
-                enemiesToSpawn = 8;
+                spawnAreaSize = new Vector2(2.5f, 2.5f);
+                enemiesToSpawn = 8 + spawnDifficultyIncrease;
                 waveIndex = 1;
                 break;
             case 3:
-                spawnAreaSize = new Vector2(5f, 5f);
+                spawnAreaSize = new Vector2(1f, 1f);
                 enemiesToSpawn = 1;
                 waveIndex = 2;
+                spawnDifficultyIncrease += 2;
                 break;
             default:
                 spawnAreaSize = new Vector2(1f, 1f);

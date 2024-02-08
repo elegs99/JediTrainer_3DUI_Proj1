@@ -62,13 +62,11 @@ public class ForceMaxPower : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log("Max power pressed");
     }
 }
     private void OnMaxPowerReleased(InputAction.CallbackContext context)
     {
         // stop all effects here
-        Debug.Log("Max power released");
+        
     }
 }
