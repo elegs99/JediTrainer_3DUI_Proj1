@@ -9,20 +9,67 @@ public class BossDroidController : MonoBehaviour
     public float randomness = 1.05f;
     public float moveSpeed = 5f;
     public bool isPaused = false;
+    public GameObject trainingPrefab;
+    public GameObject attackPrefab;
+    public GameObject enemySpawner;
 
     private bool hitPlayer = false;
     private GameObject player;
     private PlayerController playerController;
 
     private Rigidbody rb;
-    private float currentRotateSpeed;
-    private Coroutine rotateDirectionCoroutine;
+
+    private int enemiesSpawned = 0;
+
     void Start()
     {
         player = GameObject.Find("Player Target");
         playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
+        Random.InitState((int)System.DateTime.Now.Ticks);
         StartCoroutine(ApplyRandomForcesTowardsPlayer());
+        StartCoroutine(BossSpawner());
+    }
+
+    void Update()
+    {
+        if(player == null)
+        {
+            player = GameObject.Find("Player Target");
+            playerController = GameObject.Find("XR Origin (XR Rig)").GetComponent<PlayerController>();
+            rb = GetComponent<Rigidbody>();
+            Random.InitState((int)System.DateTime.Now.Ticks);
+            StartCoroutine(ApplyRandomForcesTowardsPlayer());
+            StartCoroutine(BossSpawner());
+        }
+    }
+
+    IEnumerator BossSpawner()
+    {
+
+        while(true)
+        {
+            if (isPaused)
+            {
+                yield return null;
+            }
+            int flipResult = Random.Range(0, 2);
+            if (flipResult == 0)
+            {
+                flipResult = Random.Range(0, 2);
+                enemiesSpawned++;
+                if (flipResult == 0)
+                {
+                    SpawnTrainingDroid();
+                }
+                else
+                {
+                    SpawnAttackDroid();
+                }
+            }
+            yield return new WaitForSeconds(5f);
+
+        }
     }
 
     // this part of the code isn't working right now will fix tmrw
@@ -44,12 +91,24 @@ public class BossDroidController : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            Vector3 randomDirection = CalculateRandomDirection();
-            rb.AddForce(randomDirection * moveSpeed, ForceMode.VelocityChange);
+            Vector3 collisionDirection = transform.position - collision.contacts[0].point;
+            collisionDirection.Normalize();
+            rb.AddForce(collisionDirection * moveSpeed, ForceMode.VelocityChange);
             FaceTowardsTarget();
         }
     }
 
+    void SpawnTrainingDroid()
+    {
+        GameObject trainingDroid = Instantiate(trainingPrefab, enemySpawner.transform.position, enemySpawner.transform.rotation);
+        trainingDroid.name = "Training Droid " + enemiesSpawned;
+    }
+
+    void SpawnAttackDroid()
+    {
+        GameObject attackDroid = Instantiate(attackPrefab, enemySpawner.transform.position, enemySpawner.transform.rotation);
+        attackDroid.name = "Attack Droid " + enemiesSpawned;
+    }
 
     IEnumerator ApplyRandomForcesTowardsPlayer()
     {
@@ -105,6 +164,7 @@ public class BossDroidController : MonoBehaviour
     private void FaceTowardsTarget()
     {
         transform.LookAt(player.transform);
+        transform.Rotate(0, 90, 0);
     }
 
     private void OnDestroy()

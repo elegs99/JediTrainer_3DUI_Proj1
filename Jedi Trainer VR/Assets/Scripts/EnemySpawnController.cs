@@ -35,10 +35,7 @@ public class EnemyController : MonoBehaviour
         {
             return;
         }
-        /*if(currentWave == 1 && !inTutorial)
-        {
-            StartCoroutine(StartTutorial());
-        }*/
+
         if (timer >= spawnInterval && enemiesSpawned < enemiesToSpawn)
         {
             timer = 0.0f;
