@@ -1,1 +1,1 @@
-# JediTrainer 3DUI Proj1
+# JediTrainer: 3D UI Assignment 1
