@@ -1,4 +1,4 @@
-#JediTrainer 3DUI Proj1 ReadMe
+# JediTrainer 3DUI Proj1 ReadMe
 
 ## What I contributed
 
