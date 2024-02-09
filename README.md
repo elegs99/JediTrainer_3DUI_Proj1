@@ -1,1 +1,1 @@
-# JediTrainer: 3D UI Assignment 1
+# Jedi Trainer VR: 3D UI Assignment 1
