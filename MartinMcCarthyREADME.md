@@ -9,6 +9,14 @@
 - Created boss movement and enemy spawning functionality for the boss.
 - Developed the collision matrix for enemy and player interaction with the world.
 
+### What my partner contributed
+- Integrated the OpenXR toolkit for developing with Quest 2.
+- Created force elements Push enemies, summon force from all jedi, and force grab / push.
+- Integrated the lightsaber and its interaction with the enemies.
+- Designed part of the scene including flyover of ships and smoke effect on crashed ship. As well as rocks for throwing at enemies.
+- Created health script for the boss and enemies, and found prefabs for both training and attack droid.
+- Added sound effects for immersion.
+
 ### What Works
 Overall the application works very well, all of our force elements are working with added effects to create a more immersive feel to the user. Users can grab a lightsaber and use it to deflect the training droids lasers that they fire at the user, once they finish this round they can destroy attack droids with the lightsaber on collision. In both rounds the user can utilize force powers to aid in attacking the enemies such as throwing in scene objects at them, shooting lightning at them, pushing them backwards, seeing into the future to know the enemy position, and healing themselves when they are hurt. We have successfully implemented a force management system to prevent these abilities from becoming overpowering and forcing the user to use their lightsaber like a Jedi would, the user gains force when they destroy an enemy and loses it any time they use a force power. The next round is a boss fight, in which the user must build up their force meter to full in order to summon the force from all Jedi, this gives them two lightsabers and enough power to destroy the boss enemy, using this move will deplete the user of all of their force and they can only regain it back by destroying enemies that the boss spawns in periodically.
 
