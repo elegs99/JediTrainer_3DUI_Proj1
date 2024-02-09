@@ -10,7 +10,6 @@
 * Created and implemented SFX for ambient noise, force powers, and enemy death.
 * Refined custom inputs to detect left and right-handed inputs separately.
 
-<br>
 
 This project was very interesting but also very limited on time. I feel like what I have now is just a demo but it could be further refined to make it a full-fledged game that I would be proud to put on my portfolio/resume. With more time I would have added the ability to force grab groups of objects, added more SFX, especially for lightsaber collision and swings, and finalized the game loop. I think development would have been better paced over 2 projects. The first project should be focused on dialing in the force interactions and the second should focus on environment, effects, and sounds. This way students can spend more time refining the XR inputs which I found to be the most valuable learning experience from this first project.
 
@@ -24,6 +23,8 @@ This project was very interesting but also very limited on time. I feel like wha
 * Designed the Terrain and static props
 * Made particle effect for lightning
 * Coded Enemy Movement/Collision
+
+<br>
 
 ## Known Bugs
 * Force-throwing objects at enemies instantly destroys them but should only take off 1 health. 
